@@ -1,5 +1,6 @@
 package app.service;
 
-public class ProjectService {
+public interface ProjectService {
 
+    EmployeeService getEmployeeService();
 }

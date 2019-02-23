@@ -21,7 +21,7 @@ public class Employee {
         employees.add(new Employee("Nikita", "Ersov"));
     }
 
-    Employee(String name, String lastName) {
+    Employee(final String name, final String lastName) {
         this.name = name;
         this.lastName = lastName;
     }

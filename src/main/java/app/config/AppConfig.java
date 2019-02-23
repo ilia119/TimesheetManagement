@@ -2,8 +2,8 @@ package app.config;
 
 
 import app.service.EmployeeService;
-import app.service.ProjectService;
 import app.service.impl.EmployeeServiceImpl;
+import app.service.impl.ProjectServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public ProjectService getProjectService() {
-        return new ProjectService();
+    public ProjectServiceImpl getProjectService() {
+        return new ProjectServiceImpl();
     }
 
     @Bean
