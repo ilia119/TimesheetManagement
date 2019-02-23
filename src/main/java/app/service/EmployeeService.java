@@ -1,6 +1,6 @@
 package app.service;
 
-import app.beans.Employee;
+import app.entities.Employee;
 
 import java.util.List;
 

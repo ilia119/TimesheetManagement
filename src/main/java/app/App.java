@@ -1,6 +1,6 @@
 package app;
 
-import app.beans.Employee;
+import app.entities.Employee;
 import app.config.AppConfig;
 import app.service.ProjectService;
 import org.springframework.context.ApplicationContext;

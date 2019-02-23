@@ -1,4 +1,4 @@
-package app.beans;
+package app.entities;
 
 import java.util.LinkedList;
 import java.util.List;

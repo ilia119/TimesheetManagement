@@ -1,6 +1,6 @@
 package app.service.impl;
 
-import app.beans.Employee;
+import app.entities.Employee;
 import app.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
