@@ -1,6 +1,10 @@
 package app.service;
 
+import app.beans.Employee;
+
+import java.util.List;
+
 public interface EmployeeService {
 
-    EmployeeService getEmployee();
+    List<Employee> getEmployees();
 }
