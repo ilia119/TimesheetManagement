@@ -17,7 +17,7 @@ public class App {
                 applicationContext.getBean(ProjectService.class);
 
         List<Employee> employees =
-                projectService.getEmployeeService().getEmployees();
+                projectService.getEmployeeService().getAll();
         for (Employee employee : employees) {
             System.out.println(employee.getName() + " "
                     + employee.getLastName());

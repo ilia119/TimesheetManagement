@@ -34,7 +34,7 @@ public class Employee {
         return lastName;
     }
 
-    public static List<Employee> getEmployees() {
+    public static List<Employee> getAll() {
         return employees;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
-    public List<Employee> getEmployees() {
-        return Employee.getEmployees();
+    public List<Employee> getAll() {
+        return Employee.getAll();
     }
 }
