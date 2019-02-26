@@ -19,8 +19,7 @@ public class App {
         List<Employee> employees =
                 projectService.getEmployeeService().getAll();
         for (Employee employee : employees) {
-            System.out.println(employee.getName() + " "
-                    + employee.getLastName());
+            System.out.println(employee.getName());
         }
     }
 }
