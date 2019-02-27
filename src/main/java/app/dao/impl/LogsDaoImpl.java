@@ -1,4 +1,31 @@
 package app.dao.impl;
 
-public class LogsDaoImpl {
+import app.dao.LogsDao;
+import app.entities.Logs;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class LogsDaoImpl implements LogsDao {
+
+    private static List<Logs> logsList = new LinkedList<>();
+
+    static {
+
+    }
+
+    @Override
+    public Logs findById(int id) {
+        return logsList.get(id);
+    }
+
+    @Override
+    public void save(Logs logs) {
+        logsList.add(logs);
+    }
+
+    @Override
+    public void delete(Logs logs) {
+        logsList.remove(logs);
+    }
 }

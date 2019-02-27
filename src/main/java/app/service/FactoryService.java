@@ -1,6 +1,6 @@
 package app.service;
 
-public interface FabricService {
+public interface FactoryService {
 
     CompanyService getCompanyService();
 

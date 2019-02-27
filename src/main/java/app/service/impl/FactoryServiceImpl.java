@@ -3,7 +3,7 @@ package app.service.impl;
 import app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class FabricServiceImpl implements FabricService {
+public class FactoryServiceImpl implements FactoryService {
 
     @Autowired
     private CompanyService companyService;

@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
     @Bean
-    public FabricService getFabricService() {
-        return new FabricServiceImpl();
+    public FactoryService getFabricService() {
+        return new FactoryServiceImpl();
     }
 
     @Bean
