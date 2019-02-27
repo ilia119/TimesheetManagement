@@ -17,4 +17,20 @@ public class Company {
         this.name = name;
         this.logoUrl = logoUrl;
     }
+
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
+    public void addProject(Project project) {
+        projects.add(project);
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
 }

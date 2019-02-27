@@ -1,12 +1,16 @@
-package app.dao.impl;
+package app.dao.factory;
 
 import app.dao.*;
+import app.dao.impl.CompanyDaoImpl;
+import app.dao.impl.EmployeeDaoImpl;
+import app.dao.impl.LogsDaoImpl;
+import app.dao.impl.ProjectDaoImpl;
 
-public class FactoryDaoImpl implements FactoryDao {
+public class FactoryDao {
 
-    private static FactoryDaoImpl ourInstance = new FactoryDaoImpl();
+    private static FactoryDao ourInstance = new FactoryDao();
 
-    public static FactoryDaoImpl getInstance() {
+    public static FactoryDao getInstance() {
         return ourInstance;
     }
 
@@ -15,22 +19,18 @@ public class FactoryDaoImpl implements FactoryDao {
     private LogsDao logsDao = new LogsDaoImpl();
     private ProjectDao projectDao = new ProjectDaoImpl();
 
-    @Override
     public CompanyDao getCompanyDao() {
         return companyDao;
     }
 
-    @Override
     public EmployeeDao getEmployeeDao() {
         return employeeDao;
     }
 
-    @Override
     public LogsDao getLogsDao() {
         return logsDao;
     }
 
-    @Override
     public ProjectDao getProjectDao() {
         return projectDao;
     }
