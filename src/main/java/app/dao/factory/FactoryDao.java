@@ -1,4 +1,4 @@
-package app.dao.factory.impl.factory;
+package app.dao.factory;
 
 import app.dao.CompanyDao;
 import app.dao.EmployeeDao;

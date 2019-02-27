@@ -6,7 +6,7 @@ import app.dao.EmployeeDao;
 import app.dao.LogsDao;
 import app.dao.ProjectDao;
 import app.dao.factory.impl.FactoryDaoImpl;
-import app.dao.factory.impl.factory.FactoryDao;
+import app.dao.factory.FactoryDao;
 import app.dao.impl.CompanyDaoImpl;
 import app.dao.impl.EmployeeDaoImpl;
 import app.dao.impl.LogsDaoImpl;

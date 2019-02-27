@@ -1,10 +1,7 @@
 package app.dao.factory.impl;
 
-import app.dao.CompanyDao;
-import app.dao.EmployeeDao;
-import app.dao.LogsDao;
-import app.dao.ProjectDao;
-import app.dao.factory.impl.factory.FactoryDao;
+import app.dao.*;
+import app.dao.factory.FactoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class FactoryDaoImpl implements FactoryDao {
