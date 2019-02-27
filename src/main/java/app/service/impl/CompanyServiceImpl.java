@@ -1,11 +1,11 @@
 package app.service.impl;
 
 import app.dao.CompanyDao;
-import app.dao.factory.FactoryDao;
 import app.entities.Company;
 import app.entities.Employee;
 import app.entities.Project;
 import app.service.CompanyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
-    private CompanyDao companyDao =
-            FactoryDao.getInstance().getCompanyDao();
+    @Autowired
+    CompanyDao companyDao;
 
     @Override
     public void addEmployee(Company company, Employee employee) {

@@ -1,4 +1,9 @@
-package app.service;
+package app.service.factory;
+
+import app.service.CompanyService;
+import app.service.EmployeeService;
+import app.service.LogsService;
+import app.service.ProjectService;
 
 public interface FactoryService {
 

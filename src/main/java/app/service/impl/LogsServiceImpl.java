@@ -1,16 +1,24 @@
 package app.service.impl;
 
 import app.dao.LogsDao;
-import app.dao.factory.FactoryDao;
 import app.entities.Logs;
+import app.entities.namespace.LogsNamespace;
 import app.service.LogsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class LogsServiceImpl implements LogsService {
 
-    private LogsDao logsDao =
-            FactoryDao.getInstance().getLogsDao();
+    @Autowired
+    private LogsDao logsDao;
+
+    @Override
+    public List<Logs> getLogFor(LogsNamespace logsNamespace) {
+        return null;
+    }
 
     @Override
     public Logs findById(int id) {

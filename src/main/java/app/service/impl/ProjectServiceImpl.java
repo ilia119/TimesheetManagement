@@ -1,16 +1,16 @@
 package app.service.impl;
 
 import app.dao.ProjectDao;
-import app.dao.factory.FactoryDao;
 import app.entities.Project;
 import app.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-    private ProjectDao projectDao =
-            FactoryDao.getInstance().getProjectDao();
+    @Autowired
+    private ProjectDao projectDao;
 
     @Override
     public Project findById(int id) {

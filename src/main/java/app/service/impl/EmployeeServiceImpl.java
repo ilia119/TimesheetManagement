@@ -1,17 +1,17 @@
 package app.service.impl;
 
 import app.dao.EmployeeDao;
-import app.dao.factory.FactoryDao;
 import app.entities.Employee;
 import app.entities.Project;
 import app.service.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDao employeeDao =
-            FactoryDao.getInstance().getEmployeeDao();
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Override
     public void assignToProject(Employee employee, Project project) {

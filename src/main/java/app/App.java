@@ -2,7 +2,7 @@ package app;
 
 import app.config.AppConfig;
 import app.entities.Company;
-import app.service.FactoryService;
+import app.service.factory.FactoryService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

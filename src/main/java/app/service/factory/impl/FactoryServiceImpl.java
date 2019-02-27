@@ -1,6 +1,7 @@
-package app.service.impl;
+package app.service.factory.impl;
 
 import app.service.*;
+import app.service.factory.FactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
