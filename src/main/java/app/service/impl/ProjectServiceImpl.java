@@ -1,5 +1,6 @@
 package app.service.impl;
 
+import app.entities.Project;
 import app.service.EmployeeService;
 import app.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,5 +15,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public EmployeeService getEmployeeService() {
         return employeeService;
+    }
+
+    @Override
+    public void addProject(Project project) {
+
     }
 }

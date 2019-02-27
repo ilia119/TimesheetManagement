@@ -9,9 +9,9 @@ public class Project {
     private final String logoUrl;
     private final Date startDate;
     private final Date endDate;
-    private final int manHours;
+    private final double manHours;
 
-    public Project(int id, String name, String logoUrl, Date startDate, Date endDate, int manHours) {
+    public Project(int id, String name, String logoUrl, Date startDate, Date endDate, double manHours) {
         this.id = id;
         this.name = name;
         this.logoUrl = logoUrl;
