@@ -16,6 +16,8 @@ public interface CompanyService {
 
     List<Project> getProjects(Company company);
 
+    List<Company> getCompanies();
+
     Company findById(int id);
 
     void save(Company company);

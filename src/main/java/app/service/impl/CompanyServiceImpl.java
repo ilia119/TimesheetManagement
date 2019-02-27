@@ -1,5 +1,6 @@
 package app.service.impl;
 
+import app.dao.CompanyDao;
 import app.dao.factory.FactoryDao;
 import app.entities.Company;
 import app.entities.Employee;
@@ -11,6 +12,9 @@ import java.util.List;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
+
+    private CompanyDao companyDao =
+            FactoryDao.getInstance().getCompanyDao();
 
     @Override
     public void addEmployee(Company company, Employee employee) {
@@ -33,18 +37,23 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public List<Company> getCompanies() {
+        return companyDao.getCompanies();
+    }
+
+    @Override
     public Company findById(int id) {
-        return FactoryDao.getInstance().getCompanyDao().findById(id);
+        return companyDao.findById(id);
     }
 
     @Override
     public void save(Company company) {
-        FactoryDao.getInstance().getCompanyDao().save(company);
+        companyDao.save(company);
     }
 
     @Override
     public void delete(Company company) {
-        FactoryDao.getInstance().getCompanyDao().delete(company);
+        companyDao.delete(company);
     }
 
 

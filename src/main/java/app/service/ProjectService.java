@@ -4,7 +4,9 @@ import app.entities.Project;
 
 public interface ProjectService {
 
-    EmployeeService getEmployeeService();
+    Project findById(int id);
 
-    void addProject(Project project);
+    void save(Project project);
+
+    void delete(Project project);
 }

@@ -2,7 +2,9 @@ package app.service.impl;
 
 import app.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FactoryServiceImpl implements FactoryService {
 
     @Autowired

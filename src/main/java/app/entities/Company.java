@@ -33,4 +33,15 @@ public class Company {
     public List<Project> getProjects() {
         return projects;
     }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
+                ", employees=" + employees +
+                ", projects=" + projects +
+                '}';
+    }
 }

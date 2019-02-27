@@ -17,6 +17,10 @@ public class CompanyDaoImpl implements CompanyDao {
                 new Company(1, "Warm&Cold", "someWarmAndColdUrl"));
     }
 
+    @Override
+    public List<Company> getCompanies(){
+        return companies;
+    }
 
     @Override
     public Company findById(int id) {
