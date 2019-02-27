@@ -1,7 +1,7 @@
 package app;
 
-import app.entities.Employee;
 import app.config.AppConfig;
+import app.entities.Employee;
 import app.service.ProjectService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

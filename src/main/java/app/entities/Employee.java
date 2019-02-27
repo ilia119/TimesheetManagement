@@ -5,11 +5,7 @@ import java.util.List;
 
 public class Employee {
 
-    private final int id;
     private final String name;
-    private final String photo;
-    private final String email;
-
 
     private static List<Employee> employees = new LinkedList<>();
 
@@ -25,17 +21,7 @@ public class Employee {
     }
 
     public Employee(String name) {
-        this.id = 0;
         this.name = name;
-        this.photo = null;
-        this.email = null;
-    }
-
-    public Employee(int id, String name, String photo, String email) {
-        this.id = id;
-        this.name = name;
-        this.photo = photo;
-        this.email = email;
     }
 
     public String getName() {
