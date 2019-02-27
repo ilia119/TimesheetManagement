@@ -1,50 +1,20 @@
 package app.config;
 
-
 import app.dao.CompanyDao;
 import app.dao.EmployeeDao;
 import app.dao.LogsDao;
 import app.dao.ProjectDao;
-import app.dao.factory.impl.FactoryDaoImpl;
 import app.dao.factory.FactoryDao;
+import app.dao.factory.impl.FactoryDaoImpl;
 import app.dao.impl.CompanyDaoImpl;
 import app.dao.impl.EmployeeDaoImpl;
 import app.dao.impl.LogsDaoImpl;
 import app.dao.impl.ProjectDaoImpl;
-import app.service.*;
-import app.service.factory.FactoryService;
-import app.service.factory.impl.FactoryServiceImpl;
-import app.service.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AppConfig {
-
-    @Bean
-    public FactoryService getFabricService() {
-        return new FactoryServiceImpl();
-    }
-
-    @Bean
-    public CompanyService getCompanyService() {
-        return new CompanyServiceImpl();
-    }
-
-    @Bean
-    public EmployeeService getEmployeeService() {
-        return new EmployeeServiceImpl();
-    }
-
-    @Bean
-    public LogsService getLogsService() {
-        return new LogsServiceImpl();
-    }
-
-    @Bean
-    public ProjectService getProjectService() {
-        return new ProjectServiceImpl();
-    }
+public class DaoConfig {
 
     @Bean
     public FactoryDao getFactoryDao() {
@@ -71,4 +41,3 @@ public class AppConfig {
         return new ProjectDaoImpl();
     }
 }
-
