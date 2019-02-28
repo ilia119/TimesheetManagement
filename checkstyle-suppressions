@@ -12,5 +12,4 @@
     <suppress checks="HiddenFieldCheck" files="."/>
     <suppress checks="AvoidInlineConditionalsCheck" files="."/>
     <suppress checks="AvoidStarImportCheck" files="."/>
-    <suppress checks="StaticVariableNameCheck" files="."/>
 </suppressions>

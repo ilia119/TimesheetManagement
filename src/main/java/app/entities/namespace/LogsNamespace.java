@@ -25,6 +25,6 @@ public enum LogsNamespace {
         return boundaryDate;
     }
     private static class Constants {
-        private static int NUMBER_FIRST_DAY_IN_MONTH = 1;
+        private static final int NUMBER_FIRST_DAY_IN_MONTH = 1;
     }
 }
