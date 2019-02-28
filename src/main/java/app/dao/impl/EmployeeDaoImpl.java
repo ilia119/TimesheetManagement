@@ -1,8 +1,9 @@
 package app.dao.impl;
 
 import app.dao.EmployeeDao;
-import app.entities.Employee;
+import app.dao.exceptions.exist.extensions.EmployeeNonExistException;
 import app.dao.exceptions.id.extensions.EmployeeNotFoundByIdException;
+import app.entities.Employee;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +30,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                     return employee;
                 }
             }
-            throw new EmployeeNotFoundByIdException("No employee by id = " + id, id);
+            throw new EmployeeNotFoundByIdException("No employee by id = "
+                    + id, id);
         } catch (EmployeeNotFoundByIdException exception) {
             exception.printStackTrace();
         }
@@ -42,7 +44,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void delete(Employee employee) {
-        employees.remove(employee);
+    public void delete(Employee retiringEmployee) {
+        try {
+            for (Employee employee : employees) {
+                if (employee.equals(retiringEmployee)) {
+                    employees.remove(retiringEmployee);
+                    return;
+                }
+            }
+            throw new EmployeeNonExistException("Not exist this employee: "
+                    + retiringEmployee.toString(), retiringEmployee);
+        } catch (EmployeeNonExistException exception) {
+            exception.printStackTrace();
+        }
     }
 }

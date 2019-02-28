@@ -1,6 +1,7 @@
 package app.dao.impl;
 
 import app.dao.LogsDao;
+import app.dao.exceptions.exist.extensions.LogsNonExistException;
 import app.entities.Logs;
 
 import java.util.LinkedList;
@@ -25,7 +26,18 @@ public class LogsDaoImpl implements LogsDao {
     }
 
     @Override
-    public void delete(Logs logs) {
-        logsList.remove(logs);
+    public void delete(Logs retiringLogs) {
+        try {
+            for (Logs logs : logsList) {
+                if (logs.equals(retiringLogs)) {
+                    logsList.remove(retiringLogs);
+                    return;
+                }
+            }
+            throw new LogsNonExistException("Not exist this logs: "
+                    + retiringLogs.toString(), retiringLogs);
+        } catch (LogsNonExistException exception) {
+            exception.printStackTrace();
+        }
     }
 }

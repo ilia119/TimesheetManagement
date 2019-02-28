@@ -1,8 +1,9 @@
 package app.dao.impl;
 
 import app.dao.CompanyDao;
-import app.entities.Company;
+import app.dao.exceptions.exist.extensions.CompanyNonExistException;
 import app.dao.exceptions.id.extensions.CompanyNotFoundByIdException;
+import app.entities.Company;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public List<Company> getAll(){
+    public List<Company> getAll() {
         return companies;
     }
 
@@ -31,8 +32,9 @@ public class CompanyDaoImpl implements CompanyDao {
                     return company;
                 }
             }
-            throw new CompanyNotFoundByIdException("No company found by id = " + id, id);
-        } catch (CompanyNotFoundByIdException exception){
+            throw new CompanyNotFoundByIdException("No company found by id = "
+                    + id, id);
+        } catch (CompanyNotFoundByIdException exception) {
             exception.printStackTrace();
         }
         return null;
@@ -44,7 +46,18 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void delete(Company company) {
-        companies.remove(company);
+    public void delete(Company retiringCompany) {
+        try {
+            for (Company company : companies) {
+                if (company.equals(retiringCompany)) {
+                    companies.remove(retiringCompany);
+                    return;
+                }
+            }
+            throw new CompanyNonExistException("Not exist this company: "
+                    + retiringCompany.toString(), retiringCompany);
+        } catch (CompanyNonExistException exception) {
+            exception.printStackTrace();
+        }
     }
 }

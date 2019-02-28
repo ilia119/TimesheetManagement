@@ -1,8 +1,9 @@
 package app.dao.impl;
 
 import app.dao.ProjectDao;
-import app.entities.Project;
+import app.dao.exceptions.exist.extensions.ProjectNonExistException;
 import app.dao.exceptions.id.extensions.ProjectNotFoundByIdException;
+import app.entities.Project;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -27,7 +28,8 @@ public class ProjectDaoImpl implements ProjectDao {
                 if (project.getId() == id) {
                     return project;
                 }
-                throw new ProjectNotFoundByIdException("No project by id = " + id, id);
+                throw new ProjectNotFoundByIdException("No project by id = "
+                        + id, id);
             } catch (ProjectNotFoundByIdException exception) {
                 exception.printStackTrace();
             }
@@ -41,7 +43,18 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public void delete(Project project) {
-        projects.remove(project);
+    public void delete(Project retiringProject) {
+        try {
+            for (Project project : projects) {
+                if (project.equals(retiringProject)) {
+                    projects.remove(retiringProject);
+                    return;
+                }
+            }
+            throw new ProjectNonExistException("Not exist this project: "
+                    + retiringProject.toString(), retiringProject);
+        } catch (ProjectNonExistException exception) {
+            exception.printStackTrace();
+        }
     }
 }
