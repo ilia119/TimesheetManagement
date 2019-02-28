@@ -53,19 +53,20 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public Project findById(int id) {
-        for (Project project : projects) {
-            try {
+        try {
+            for (Project project : projects) {
                 if (project.getId() == id) {
                     return project;
                 }
-                throw new ProjectNotFoundByIdException("No project by id = "
-                        + id, id);
-            } catch (ProjectNotFoundByIdException exception) {
-                exception.printStackTrace();
             }
+            throw new ProjectNotFoundByIdException("No project by id = "
+                    + id, id);
+        } catch (ProjectNotFoundByIdException exception) {
+            exception.printStackTrace();
         }
         return null;
     }
+
 
     @Override
     public void save(Project project) {

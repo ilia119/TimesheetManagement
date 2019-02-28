@@ -9,6 +9,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class App {
 
+    private static final int COMPANY_HORN_AND_HOOVES_ID = 0;
+
+    private static final int PROJECT_CYBER_PINEAPPLE_ID = 0;
+    private static final int PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID = 1;
+
+    private static final int EMPLOYEE_MARINKA_MANDARINKA_ID = 0;
+    private static final int EMPLOYEE_ALYNKA_APELSYNKA_ID = 1;
+    private static final int EMPLOYEE_AGAP_KRYVOLAP_ID = 2;
+
+
     public static void main(String[] args) {
 
 
@@ -32,5 +42,40 @@ public class App {
         factoryService.getEmployeeService().getEmployees()) {
             System.out.println(employee.toString());
         }
+
+        Company company =
+                factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
+
+        company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID));
+        company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_ALYNKA_APELSYNKA_ID));
+        company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID));
+
+        company.addProject(factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID));
+        company.addProject(factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID));
+
+        factoryService.getEmployeeService().assignToProject(
+                factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
+                factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID)
+        );
+        factoryService.getEmployeeService().assignToProject(
+                factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID),
+                factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID)
+        );
+
+        factoryService.getEmployeeService().assignToProject(
+                factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
+                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
+        );
+        factoryService.getEmployeeService().assignToProject(
+                factoryService.getEmployeeService().findById(EMPLOYEE_ALYNKA_APELSYNKA_ID),
+                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
+        );
+        factoryService.getEmployeeService().assignToProject(
+                factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID),
+                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
+        );
+
+        System.out.println(company.toString());
+
     }
 }
