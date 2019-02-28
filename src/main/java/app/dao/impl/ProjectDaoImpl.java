@@ -27,22 +27,26 @@ public class ProjectDaoImpl implements ProjectDao {
         calendarEndDate.set(Calendar.MONTH, Calendar.MARCH);
         calendarEndDate.set(Calendar.DAY_OF_MONTH, 1);
 
-        long MAN_HOURS = 3600000000L;
+        long manHours = 3600000000L;
 
-        projects.add(new Project(0, "Cyber Pineapple", "someCyberPineAppleUrl",
-                new Date(calendarStartDate.getTimeInMillis()), new Date(calendarEndDate.getTimeInMillis()),
-                MAN_HOURS));
+        projects.add(new Project(0, "Cyber Pineapple",
+                "someCyberPineAppleUrl",
+                new Date(calendarStartDate.getTimeInMillis()),
+                new Date(calendarEndDate.getTimeInMillis()),
+                manHours));
 
         calendarEndDate.clear();
         calendarEndDate.set(Calendar.YEAR, 2019);
         calendarEndDate.set(Calendar.MONTH, Calendar.MAY);
         calendarEndDate.set(Calendar.DAY_OF_MONTH, 1);
 
-        MAN_HOURS = 5400000000L;
+        manHours = 5400000000L;
 
-        projects.add(new Project(1, "Purple Warm&Cold Hammer", "somePurpleWarm&ColdHammerUrl",
-                new Date(calendarStartDate.getTimeInMillis()), new Date(calendarEndDate.getTimeInMillis()),
-                MAN_HOURS));
+        projects.add(new Project(1, "Purple Warm&Cold Hammer",
+                "somePurpleWarm&ColdHammerUrl",
+                new Date(calendarStartDate.getTimeInMillis()),
+                new Date(calendarEndDate.getTimeInMillis()),
+                manHours));
 
     }
 

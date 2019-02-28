@@ -19,7 +19,8 @@ public class LogsDaoImpl implements LogsDao {
         Date boundaryDate = logsNamespace.getBoundaryDate();
         LinkedList<Logs> resultLogsList = new LinkedList<>();
 
-        ListIterator<Logs> logsIterator = logsList.listIterator(logsList.size());
+        ListIterator<Logs> logsIterator
+                = logsList.listIterator(logsList.size());
         Logs previous;
         while (logsIterator.hasPrevious()) {
             previous = logsIterator.previous();

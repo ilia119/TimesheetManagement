@@ -39,52 +39,58 @@ public class App {
 
 
     public static void main(String[] args) {
-
         outputLogs();
-
     }
 
     private static void outputLogs() {
 
-        for (Logs logs :
-                factoryService.getLogsService().getLogFor(LogsNamespace.TODAY)) {
+        for (Logs logs
+                : factoryService.getLogsService()
+                .getLogFor(LogsNamespace.TODAY)) {
             System.out.println(logs.toString());
         }
 
         System.out.println();
 
-        for (Logs logs :
-                factoryService.getLogsService().getLogFor(LogsNamespace.THIS_WEEK)) {
+        for (Logs logs
+                : factoryService.getLogsService()
+                .getLogFor(LogsNamespace.THIS_WEEK)) {
             System.out.println(logs.toString());
         }
 
         System.out.println();
 
-        for (Logs logs :
-                factoryService.getLogsService().getLogFor(LogsNamespace.THIS_MONTH)) {
+        for (Logs logs
+                : factoryService.getLogsService()
+                .getLogFor(LogsNamespace.THIS_MONTH)) {
             System.out.println(logs.toString());
         }
 
         System.out.println();
 
-        for (Logs logs :
-                factoryService.getLogsService().getAllLogs()) {
+        for (Logs logs
+                : factoryService.getLogsService().getAllLogs()) {
             System.out.println(logs.toString());
         }
     }
 
     private static void fillLogs() {
         Employee employeeMarinka =
-                factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID);
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_MARINKA_MANDARINKA_ID);
         Employee employeeAlynka =
-                factoryService.getEmployeeService().findById(EMPLOYEE_ALYNKA_APELSYNKA_ID);
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_ALYNKA_APELSYNKA_ID);
         Employee employeeAgap =
-                factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID);
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_AGAP_KRYVOLAP_ID);
 
         Project projectPineapple =
-                factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID);
+                factoryService.getProjectService()
+                        .findById(PROJECT_CYBER_PINEAPPLE_ID);
         Project projectHammer =
-                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID);
+                factoryService.getProjectService()
+                        .findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID);
 
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
@@ -147,82 +153,98 @@ public class App {
 
         calendar.set(Calendar.DAY_OF_MONTH, 28);
         logs = new Logs(employeeAlynka, projectHammer, 648000000L,
-                "This project is so amazing! But Agap already got me. " +
-                        "I plan to use purple warm&cold hammer against Agap.",
+                "This project is so amazing! But Agap already got me. "
+                        + "I plan to use purple warm&cold hammer against Agap.",
                 new Date(calendar.getTimeInMillis()));
         factoryService.getLogsService().save(logs);
     }
 
     private static void assignEmployeesToProjects() {
         factoryService.getEmployeeService().assignToProject(
-                factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
-                factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID)
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
+                factoryService.getProjectService()
+                        .findById(PROJECT_CYBER_PINEAPPLE_ID)
         );
         factoryService.getEmployeeService().assignToProject(
-                factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID),
-                factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID)
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_AGAP_KRYVOLAP_ID),
+                factoryService.getProjectService()
+                        .findById(PROJECT_CYBER_PINEAPPLE_ID)
         );
 
         factoryService.getEmployeeService().assignToProject(
-                factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
-                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
+                factoryService.getProjectService()
+                        .findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
         );
         factoryService.getEmployeeService().assignToProject(
-                factoryService.getEmployeeService().findById(EMPLOYEE_ALYNKA_APELSYNKA_ID),
-                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_ALYNKA_APELSYNKA_ID),
+                factoryService.getProjectService()
+                        .findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
         );
         factoryService.getEmployeeService().assignToProject(
-                factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID),
-                factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
+                factoryService.getEmployeeService()
+                        .findById(EMPLOYEE_AGAP_KRYVOLAP_ID),
+                factoryService.getProjectService()
+                        .findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID)
         );
     }
 
     private static void outputCompanyToString() {
         Company company =
-                factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
+                factoryService.getCompanyService()
+                        .findById(COMPANY_HORN_AND_HOOVES_ID);
 
         System.out.println(company.toString());
     }
 
     private static void addEmployeesToCompany() {
         Company company =
-                factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
+                factoryService.getCompanyService()
+                        .findById(COMPANY_HORN_AND_HOOVES_ID);
 
-        company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID));
-        company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_ALYNKA_APELSYNKA_ID));
-        company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID));
+        company.addEmployee(factoryService.getEmployeeService()
+                .findById(EMPLOYEE_MARINKA_MANDARINKA_ID));
+        company.addEmployee(factoryService.getEmployeeService()
+                .findById(EMPLOYEE_ALYNKA_APELSYNKA_ID));
+        company.addEmployee(factoryService.getEmployeeService()
+                .findById(EMPLOYEE_AGAP_KRYVOLAP_ID));
     }
 
     private static void addProjectsToCompany() {
         Company company =
-                factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
+                factoryService.getCompanyService()
+                        .findById(COMPANY_HORN_AND_HOOVES_ID);
 
-        company.addProject(factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID));
-        company.addProject(factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID));
+        company.addProject(factoryService.getProjectService()
+                .findById(PROJECT_CYBER_PINEAPPLE_ID));
+        company.addProject(factoryService.getProjectService()
+                .findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID));
     }
 
     private static void outputAllData() {
 
-        for (Company company :
-                factoryService.getCompanyService().getCompanies()) {
+        for (Company company
+                : factoryService.getCompanyService().getCompanies()) {
             System.out.println(company.toString());
         }
 
-        for (Project project :
-                factoryService.getProjectService().getProjects()) {
+        for (Project project
+                : factoryService.getProjectService().getProjects()) {
             System.out.println(project.toString());
         }
 
-        for (Employee employee :
-                factoryService.getEmployeeService().getEmployees()) {
+        for (Employee employee
+                : factoryService.getEmployeeService().getEmployees()) {
             System.out.println(employee.toString());
         }
 
-        for (Logs logs :
-                factoryService.getLogsService().getAllLogs()) {
+        for (Logs logs
+                : factoryService.getLogsService().getAllLogs()) {
             System.out.println(logs.toString());
         }
-
-        System.out.println('\n');
     }
 }

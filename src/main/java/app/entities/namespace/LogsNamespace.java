@@ -9,9 +9,11 @@ public enum LogsNamespace {
 
     TODAY(DateTime.now().withTimeAtStartOfDay().toDate()),
     THIS_WEEK(DateTime.now()
-            .withDayOfWeek(DateTimeConstants.MONDAY).withTimeAtStartOfDay().toDate()),
+            .withDayOfWeek(DateTimeConstants.MONDAY)
+            .withTimeAtStartOfDay().toDate()),
     THIS_MONTH(DateTime.now()
-            .withDayOfMonth(Constants.NUMBER_FIRST_DAY_IN_MONTH).withTimeAtStartOfDay().toDate());
+            .withDayOfMonth(Constants.NUMBER_FIRST_DAY_IN_MONTH)
+            .withTimeAtStartOfDay().toDate());
 
     private Date boundaryDate;
 
