@@ -5,8 +5,10 @@ import app.dao.exceptions.exist.extensions.LogsNonExistException;
 import app.entities.Logs;
 import app.entities.namespace.LogsNamespace;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class LogsDaoImpl implements LogsDao {
 
@@ -14,7 +16,19 @@ public class LogsDaoImpl implements LogsDao {
 
     @Override
     public synchronized List<Logs> getLogFor(LogsNamespace logsNamespace) {
-        return null;
+        Date boundaryDate = logsNamespace.getBoundaryDate();
+        LinkedList<Logs> resultLogsList = new LinkedList<>();
+
+        ListIterator<Logs> logsIterator = logsList.listIterator(logsList.size());
+        Logs previous;
+        while (logsIterator.hasPrevious()) {
+            previous = logsIterator.previous();
+            if (previous.getDate().before(boundaryDate)) {
+                break;
+            }
+            resultLogsList.add(previous);
+        }
+        return resultLogsList;
     }
 
     @Override

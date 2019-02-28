@@ -63,12 +63,13 @@ public class Logs {
 
     @Override
     public String toString() {
-        return "Logs{"
-                + "employee=" + employee
-                + ", project=" + project
-                + ", time=" + time
-                + ", comment='" + comment + '\''
-                + ", date=" + date
+        return "Log{"
+                + " Employee: " + employee.getName() + ';'
+                + " Project: " + project.getName() + ';'
+                + " Time: " + time + ';'
+                + " Date: " + date + ';'
+                + '\n'
+                + "comment: '" + comment + '\''
                 + '}';
     }
 }

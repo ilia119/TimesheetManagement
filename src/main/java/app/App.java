@@ -4,6 +4,7 @@ import app.entities.Company;
 import app.entities.Employee;
 import app.entities.Logs;
 import app.entities.Project;
+import app.entities.namespace.LogsNamespace;
 import app.service.factory.FactoryService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -39,11 +40,37 @@ public class App {
 
     public static void main(String[] args) {
 
+        outputLogs();
+
+    }
+
+    private static void outputLogs() {
+
+        for (Logs logs :
+                factoryService.getLogsService().getLogFor(LogsNamespace.TODAY)) {
+            System.out.println(logs.toString());
+        }
+
+        System.out.println();
+
+        for (Logs logs :
+                factoryService.getLogsService().getLogFor(LogsNamespace.THIS_WEEK)) {
+            System.out.println(logs.toString());
+        }
+
+        System.out.println();
+
+        for (Logs logs :
+                factoryService.getLogsService().getLogFor(LogsNamespace.THIS_MONTH)) {
+            System.out.println(logs.toString());
+        }
+
+        System.out.println();
+
         for (Logs logs :
                 factoryService.getLogsService().getAllLogs()) {
             System.out.println(logs.toString());
         }
-
     }
 
     private static void fillLogs() {
