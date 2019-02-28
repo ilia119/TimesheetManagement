@@ -2,7 +2,7 @@ package app.dao.impl;
 
 import app.dao.EmployeeDao;
 import app.entities.Employee;
-import app.exceptions.EmployeeNotFoundException;
+import app.exceptions.extensions.EmployeeNotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -2,7 +2,7 @@ package app.dao.impl;
 
 import app.dao.CompanyDao;
 import app.entities.Company;
-import app.exceptions.CompanyNotFoundException;
+import app.exceptions.extensions.CompanyNotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
