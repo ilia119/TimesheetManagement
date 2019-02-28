@@ -2,7 +2,7 @@ package app.dao.impl;
 
 import app.dao.EmployeeDao;
 import app.entities.Employee;
-import app.exceptions.extensions.EmployeeNotFoundException;
+import app.exceptions.id.extensions.EmployeeNotFoundByIdException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,8 +24,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                     return employee;
                 }
             }
-            throw new EmployeeNotFoundException("No employee by id = " + id, id);
-        } catch (EmployeeNotFoundException exception) {
+            throw new EmployeeNotFoundByIdException("No employee by id = " + id, id);
+        } catch (EmployeeNotFoundByIdException exception) {
             exception.printStackTrace();
         }
         return null;
