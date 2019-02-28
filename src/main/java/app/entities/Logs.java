@@ -11,7 +11,8 @@ public class Logs {
     private final String comment;
     private final Date date;
 
-    public Logs(Employee employee, Project project, double time, String comment, Date date) {
+    public Logs(Employee employee, Project project, double time,
+                String comment, Date date) {
         this.employee = employee;
         this.project = project;
         this.time = time;
@@ -41,14 +42,18 @@ public class Logs {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) { return true; }
-        if (!(object instanceof Logs)) { return false; }
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Logs)) {
+            return false;
+        }
         Logs logs = (Logs) object;
-        return Double.compare(logs.time, time) == 0 &&
-                Objects.equals(employee, logs.employee) &&
-                Objects.equals(project, logs.project) &&
-                Objects.equals(comment, logs.comment) &&
-                Objects.equals(date, logs.date);
+        return Double.compare(logs.time, time) == 0
+                && Objects.equals(employee, logs.employee)
+                && Objects.equals(project, logs.project)
+                && Objects.equals(comment, logs.comment)
+                && Objects.equals(date, logs.date);
     }
 
     @Override
@@ -58,12 +63,12 @@ public class Logs {
 
     @Override
     public String toString() {
-        return "Logs{" +
-                "employee=" + employee +
-                ", project=" + project +
-                ", time=" + time +
-                ", comment='" + comment + '\'' +
-                ", date=" + date +
-                '}';
+        return "Logs{"
+                + "employee=" + employee
+                + ", project=" + project
+                + ", time=" + time
+                + ", comment='" + comment + '\''
+                + ", date=" + date
+                + '}';
     }
 }

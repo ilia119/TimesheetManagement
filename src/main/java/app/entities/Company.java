@@ -49,14 +49,18 @@ public class Company {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) { return true; }
-        if (!(object instanceof Company)) { return false; }
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Company)) {
+            return false;
+        }
         Company company = (Company) object;
-        return id == company.id &&
-                Objects.equals(name, company.name) &&
-                Objects.equals(logoUrl, company.logoUrl) &&
-                Objects.equals(employees, company.employees) &&
-                Objects.equals(projects, company.projects);
+        return id == company.id
+                && Objects.equals(name, company.name)
+                && Objects.equals(logoUrl, company.logoUrl)
+                && Objects.equals(employees, company.employees)
+                && Objects.equals(projects, company.projects);
     }
 
     @Override
@@ -66,12 +70,12 @@ public class Company {
 
     @Override
     public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", logoUrl='" + logoUrl + '\'' +
-                ", employees=" + employees +
-                ", projects=" + projects +
-                '}';
+        return "Company{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", logoUrl='" + logoUrl + '\''
+                + ", employees=" + employees
+                + ", projects=" + projects
+                + '}';
     }
 }

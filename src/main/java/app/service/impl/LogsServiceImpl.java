@@ -17,7 +17,7 @@ public class LogsServiceImpl implements LogsService {
 
     @Override
     public List<Logs> getLogFor(LogsNamespace logsNamespace) {
-        return null;
+        return logsDao.getLogFor(logsNamespace);
     }
 
     @Override

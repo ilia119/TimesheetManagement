@@ -17,7 +17,8 @@ public class App {
         FactoryService factoryService =
                 applicationContext.getBean(FactoryService.class);
 
-        List<Company> companies = factoryService.getCompanyService().getCompanies();
+        List<Company> companies =
+                factoryService.getCompanyService().getCompanies();
 
         for (Company company : companies) {
             System.out.println(company.toString());

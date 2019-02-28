@@ -17,7 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void assignToProject(Employee employee, Project project) {
-
+        employee.assignToProject(project);
     }
 
     @Override

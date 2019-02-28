@@ -8,8 +8,8 @@ public class NotFoundByIdException extends Exception {
         return id;
     }
 
-    public NotFoundByIdException(String message, int id){
-        super (message);
+    public NotFoundByIdException(String message, int id) {
+        super(message);
         this.id = id;
     }
 }

@@ -12,10 +12,6 @@ public class ProjectDaoImpl implements ProjectDao {
 
     private static List<Project> projects = new LinkedList<>();
 
-    static {
-
-    }
-
     @Override
     public List<Project> getAll() {
         return projects;

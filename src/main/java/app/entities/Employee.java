@@ -36,16 +36,24 @@ public class Employee {
         return email;
     }
 
+    public void assignToProject(Project project) {
+        projects.add(project);
+    }
+
     @Override
     public boolean equals(Object object) {
-        if (this == object) { return true; }
-        if (!(object instanceof Employee)) { return false; }
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Employee)) {
+            return false;
+        }
         Employee employee = (Employee) object;
-        return id == employee.id &&
-                Objects.equals(name, employee.name) &&
-                Objects.equals(photo, employee.photo) &&
-                Objects.equals(email, employee.email) &&
-                Objects.equals(projects, employee.projects);
+        return id == employee.id
+                && Objects.equals(name, employee.name)
+                && Objects.equals(photo, employee.photo)
+                && Objects.equals(email, employee.email)
+                && Objects.equals(projects, employee.projects);
     }
 
     @Override
@@ -55,12 +63,12 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", photo='" + photo + '\'' +
-                ", email='" + email + '\'' +
-                ", projects=" + projects +
-                '}';
+        return "Employee{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", photo='" + photo + '\''
+                + ", email='" + email + '\''
+                + ", projects=" + projects
+                + '}';
     }
 }

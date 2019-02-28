@@ -14,7 +14,7 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
-    CompanyDao companyDao;
+    private CompanyDao companyDao;
 
     @Override
     public void addEmployee(Company company, Employee employee) {

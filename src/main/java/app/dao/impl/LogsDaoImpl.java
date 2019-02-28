@@ -3,6 +3,7 @@ package app.dao.impl;
 import app.dao.LogsDao;
 import app.dao.exceptions.exist.extensions.LogsNonExistException;
 import app.entities.Logs;
+import app.entities.namespace.LogsNamespace;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,8 +12,9 @@ public class LogsDaoImpl implements LogsDao {
 
     private static List<Logs> logsList = new LinkedList<>();
 
-    static {
-
+    @Override
+    public List<Logs> getLogFor(LogsNamespace logsNamespace) {
+        return null;
     }
 
     @Override

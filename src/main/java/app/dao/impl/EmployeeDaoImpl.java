@@ -12,10 +12,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     private static List<Employee> employees = new LinkedList<>();
 
-    static {
-
-    }
-    
     @Override
     public List<Employee> getAll() {
         return employees;
