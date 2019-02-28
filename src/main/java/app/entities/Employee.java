@@ -68,6 +68,7 @@ public class Employee {
                 + ", name='" + name + '\''
                 + ", photo='" + photo + '\''
                 + ", email='" + email + '\''
+                + '\n'
                 + ", projects=" + projects
                 + '}';
     }

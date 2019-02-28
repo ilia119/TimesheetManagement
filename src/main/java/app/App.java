@@ -43,6 +43,8 @@ public class App {
             System.out.println(employee.toString());
         }
 
+        System.out.println('\n');
+
         Company company =
                 factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
 

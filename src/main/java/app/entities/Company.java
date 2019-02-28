@@ -74,7 +74,9 @@ public class Company {
                 + "id=" + id
                 + ", name='" + name + '\''
                 + ", logoUrl='" + logoUrl + '\''
+                + '\n'
                 + ", employees=" + employees
+                + '\n'
                 + ", projects=" + projects
                 + '}';
     }
