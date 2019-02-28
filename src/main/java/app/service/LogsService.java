@@ -9,6 +9,8 @@ public interface LogsService {
 
     List<Logs> getLogFor(LogsNamespace logsNamespace);
 
+    List<Logs> getAllLogs();
+
     void save(Logs logs);
 
     void delete(Logs logs);

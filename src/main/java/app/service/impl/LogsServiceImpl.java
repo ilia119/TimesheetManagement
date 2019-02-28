@@ -21,6 +21,11 @@ public class LogsServiceImpl implements LogsService {
     }
 
     @Override
+    public List<Logs> getAllLogs() {
+        return logsDao.getAll();
+    }
+
+    @Override
     public void save(Logs logs) {
         logsDao.save(logs);
     }
