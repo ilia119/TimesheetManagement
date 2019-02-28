@@ -18,12 +18,12 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public List<Company> getAll() {
+    public synchronized List<Company> getAll() {
         return companies;
     }
 
     @Override
-    public Company findById(int id) {
+    public synchronized Company findById(int id) {
         try {
             for (Company company : companies) {
                 if (company.getId() == id) {
@@ -39,12 +39,12 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public void save(Company company) {
+    public synchronized void save(Company company) {
         companies.add(company);
     }
 
     @Override
-    public void delete(Company retiringCompany) {
+    public synchronized void delete(Company retiringCompany) {
         try {
             for (Company company : companies) {
                 if (company.equals(retiringCompany)) {

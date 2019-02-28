@@ -22,12 +22,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> getAll() {
+    public synchronized List<Employee> getAll() {
         return employees;
     }
 
     @Override
-    public Employee findById(int id) {
+    public synchronized Employee findById(int id) {
         try {
             for (Employee employee : employees) {
                 if (employee.getId() == id) {
@@ -43,12 +43,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void save(Employee employee) {
+    public synchronized void save(Employee employee) {
         employees.add(employee);
     }
 
     @Override
-    public void delete(Employee retiringEmployee) {
+    public synchronized void delete(Employee retiringEmployee) {
         try {
             for (Employee employee : employees) {
                 if (employee.equals(retiringEmployee)) {

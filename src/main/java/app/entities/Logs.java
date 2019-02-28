@@ -7,11 +7,11 @@ public class Logs {
 
     private final Employee employee;
     private final Project project;
-    private final double time;
+    private final long time;
     private final String comment;
     private final Date date;
 
-    public Logs(Employee employee, Project project, double time,
+    public Logs(Employee employee, Project project, long time,
                 String comment, Date date) {
         this.employee = employee;
         this.project = project;

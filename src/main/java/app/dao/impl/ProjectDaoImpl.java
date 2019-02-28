@@ -17,8 +17,8 @@ public class ProjectDaoImpl implements ProjectDao {
     static {
         Calendar calendarStartDate = Calendar.getInstance();
         calendarStartDate.clear();
-        calendarStartDate.set(Calendar.YEAR, 2019);
-        calendarStartDate.set(Calendar.MONTH, Calendar.JANUARY);
+        calendarStartDate.set(Calendar.YEAR, 2018);
+        calendarStartDate.set(Calendar.MONTH, Calendar.OCTOBER);
         calendarStartDate.set(Calendar.DAY_OF_MONTH, 5);
 
         Calendar calendarEndDate = Calendar.getInstance();
@@ -27,7 +27,7 @@ public class ProjectDaoImpl implements ProjectDao {
         calendarEndDate.set(Calendar.MONTH, Calendar.MARCH);
         calendarEndDate.set(Calendar.DAY_OF_MONTH, 1);
 
-        long MAN_HOURS = 1440000000L;
+        long MAN_HOURS = 3600000000L;
 
         projects.add(new Project(0, "Cyber Pineapple", "someCyberPineAppleUrl",
                 new Date(calendarStartDate.getTimeInMillis()), new Date(calendarEndDate.getTimeInMillis()),
@@ -38,7 +38,7 @@ public class ProjectDaoImpl implements ProjectDao {
         calendarEndDate.set(Calendar.MONTH, Calendar.MAY);
         calendarEndDate.set(Calendar.DAY_OF_MONTH, 1);
 
-        MAN_HOURS = 2880000000L;
+        MAN_HOURS = 5400000000L;
 
         projects.add(new Project(1, "Purple Warm&Cold Hammer", "somePurpleWarm&ColdHammerUrl",
                 new Date(calendarStartDate.getTimeInMillis()), new Date(calendarEndDate.getTimeInMillis()),
@@ -47,12 +47,12 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public List<Project> getAll() {
+    public synchronized List<Project> getAll() {
         return projects;
     }
 
     @Override
-    public Project findById(int id) {
+    public synchronized Project findById(int id) {
         try {
             for (Project project : projects) {
                 if (project.getId() == id) {
@@ -69,12 +69,12 @@ public class ProjectDaoImpl implements ProjectDao {
 
 
     @Override
-    public void save(Project project) {
+    public synchronized void save(Project project) {
         projects.add(project);
     }
 
     @Override
-    public void delete(Project retiringProject) {
+    public synchronized void delete(Project retiringProject) {
         try {
             for (Project project : projects) {
                 if (project.equals(retiringProject)) {

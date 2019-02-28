@@ -13,22 +13,22 @@ public class LogsDaoImpl implements LogsDao {
     private static List<Logs> logsList = new LinkedList<>();
 
     @Override
-    public List<Logs> getLogFor(LogsNamespace logsNamespace) {
+    public synchronized List<Logs> getLogFor(LogsNamespace logsNamespace) {
         return null;
     }
 
     @Override
-    public List<Logs> getAll() {
+    public synchronized List<Logs> getAll() {
         return logsList;
     }
 
     @Override
-    public void save(Logs logs) {
+    public synchronized void save(Logs logs) {
         logsList.add(logs);
     }
 
     @Override
-    public void delete(Logs retiringLogs) {
+    public synchronized void delete(Logs retiringLogs) {
         try {
             for (Logs logs : logsList) {
                 if (logs.equals(retiringLogs)) {
