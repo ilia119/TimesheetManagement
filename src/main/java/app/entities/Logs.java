@@ -18,4 +18,23 @@ public class Logs {
         this.date = date;
     }
 
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public double getTime() {
+        return time;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }

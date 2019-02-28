@@ -19,7 +19,20 @@ public class Employee {
         this.email = email;
     }
 
-    public void assignToProject(Project project) {
-        projects.add(project);
+    public int getId() {
+        return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
 }

@@ -2,6 +2,7 @@ package app.dao.impl;
 
 import app.dao.CompanyDao;
 import app.entities.Company;
+import app.exceptions.CompanyNotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,7 +25,17 @@ public class CompanyDaoImpl implements CompanyDao {
 
     @Override
     public Company findById(int id) {
-        return companies.get(id);
+        try {
+            for (Company company : companies) {
+                if (company.getId() == id) {
+                    return company;
+                }
+            }
+            throw new CompanyNotFoundException("No company found by id = " + id, id);
+        } catch (CompanyNotFoundException exception){
+            exception.printStackTrace();
+        }
+        return null;
     }
 
     @Override

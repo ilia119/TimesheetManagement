@@ -18,6 +18,18 @@ public class Company {
         this.logoUrl = logoUrl;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }

@@ -21,11 +21,6 @@ public class LogsServiceImpl implements LogsService {
     }
 
     @Override
-    public Logs findById(int id) {
-        return logsDao.findById(id);
-    }
-
-    @Override
     public void save(Logs logs) {
         logsDao.save(logs);
     }

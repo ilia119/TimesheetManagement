@@ -23,5 +23,8 @@ public class App {
             System.out.println(company.toString());
         }
 
+        Company company = factoryService.getCompanyService().findById(56);
+        System.out.println(company.toString());
+
     }
 }

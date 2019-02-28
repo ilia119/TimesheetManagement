@@ -2,6 +2,7 @@ package app.dao.impl;
 
 import app.dao.EmployeeDao;
 import app.entities.Employee;
+import app.exceptions.EmployeeNotFoundException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +18,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee findById(int id) {
-        return employees.get(id);
+        try {
+            for (Employee employee : employees) {
+                if (employee.getId() == id) {
+                    return employee;
+                }
+            }
+            throw new EmployeeNotFoundException("No employee by id = " + id, id);
+        } catch (EmployeeNotFoundException exception) {
+            exception.printStackTrace();
+        }
+        return null;
     }
 
     @Override

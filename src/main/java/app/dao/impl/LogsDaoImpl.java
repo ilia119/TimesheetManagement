@@ -15,11 +15,6 @@ public class LogsDaoImpl implements LogsDao {
     }
 
     @Override
-    public Logs findById(int id) {
-        return logsList.get(id);
-    }
-
-    @Override
     public void save(Logs logs) {
         logsList.add(logs);
     }
