@@ -15,8 +15,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     static {
 
     }
-
-
+    
     @Override
     public List<Employee> getAll() {
         return employees;
