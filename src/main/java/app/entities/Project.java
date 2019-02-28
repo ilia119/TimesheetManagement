@@ -1,6 +1,7 @@
 package app.entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Project {
 
@@ -42,5 +43,35 @@ public class Project {
 
     public double getManHours() {
         return manHours;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) { return true; }
+        if (!(object instanceof Project)) { return false; }
+        Project project = (Project) object;
+        return id == project.id &&
+                Double.compare(project.manHours, manHours) == 0 &&
+                Objects.equals(name, project.name) &&
+                Objects.equals(logoUrl, project.logoUrl) &&
+                Objects.equals(startDate, project.startDate) &&
+                Objects.equals(endDate, project.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, logoUrl, startDate, endDate, manHours);
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", logoUrl='" + logoUrl + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", manHours=" + manHours +
+                '}';
     }
 }

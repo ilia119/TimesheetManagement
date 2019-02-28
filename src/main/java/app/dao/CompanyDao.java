@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CompanyDao {
 
-    List<Company> getCompanies();
+    List<Company> getAll();
 
     Company findById(int id);
 

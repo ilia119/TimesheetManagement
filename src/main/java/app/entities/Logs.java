@@ -1,6 +1,7 @@
 package app.entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Logs {
 
@@ -36,5 +37,33 @@ public class Logs {
 
     public Date getDate() {
         return date;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) { return true; }
+        if (!(object instanceof Logs)) { return false; }
+        Logs logs = (Logs) object;
+        return Double.compare(logs.time, time) == 0 &&
+                Objects.equals(employee, logs.employee) &&
+                Objects.equals(project, logs.project) &&
+                Objects.equals(comment, logs.comment) &&
+                Objects.equals(date, logs.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employee, project, time, comment, date);
+    }
+
+    @Override
+    public String toString() {
+        return "Logs{" +
+                "employee=" + employee +
+                ", project=" + project +
+                ", time=" + time +
+                ", comment='" + comment + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

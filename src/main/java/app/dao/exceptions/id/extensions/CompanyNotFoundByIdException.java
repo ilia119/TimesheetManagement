@@ -1,6 +1,6 @@
-package app.exceptions.id.extensions;
+package app.dao.exceptions.id.extensions;
 
-import app.exceptions.id.NotFoundByIdException;
+import app.dao.exceptions.id.NotFoundByIdException;
 
 public class CompanyNotFoundByIdException extends NotFoundByIdException {
 

@@ -2,7 +2,7 @@ package app.dao.impl;
 
 import app.dao.CompanyDao;
 import app.entities.Company;
-import app.exceptions.id.extensions.CompanyNotFoundByIdException;
+import app.dao.exceptions.id.extensions.CompanyNotFoundByIdException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public List<Company> getCompanies(){
+    public List<Company> getAll(){
         return companies;
     }
 

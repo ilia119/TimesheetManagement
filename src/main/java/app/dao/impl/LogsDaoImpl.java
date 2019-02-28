@@ -15,6 +15,11 @@ public class LogsDaoImpl implements LogsDao {
     }
 
     @Override
+    public List<Logs> getAll() {
+        return logsList;
+    }
+
+    @Override
     public void save(Logs logs) {
         logsList.add(logs);
     }

@@ -1,4 +1,4 @@
-package app.exceptions.id;
+package app.dao.exceptions.id;
 
 public class NotFoundByIdException extends Exception {
 

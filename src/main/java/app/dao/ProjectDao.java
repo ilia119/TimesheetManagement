@@ -2,7 +2,11 @@ package app.dao;
 
 import app.entities.Project;
 
+import java.util.List;
+
 public interface ProjectDao {
+
+    List<Project> getAll();
 
     Project findById(int id);
 

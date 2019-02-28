@@ -2,6 +2,7 @@ package app.entities;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Company {
 
@@ -44,6 +45,23 @@ public class Company {
 
     public List<Project> getProjects() {
         return projects;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) { return true; }
+        if (!(object instanceof Company)) { return false; }
+        Company company = (Company) object;
+        return id == company.id &&
+                Objects.equals(name, company.name) &&
+                Objects.equals(logoUrl, company.logoUrl) &&
+                Objects.equals(employees, company.employees) &&
+                Objects.equals(projects, company.projects);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, logoUrl, employees, projects);
     }
 
     @Override

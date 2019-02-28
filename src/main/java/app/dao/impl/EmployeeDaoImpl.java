@@ -2,7 +2,7 @@ package app.dao.impl;
 
 import app.dao.EmployeeDao;
 import app.entities.Employee;
-import app.exceptions.id.extensions.EmployeeNotFoundByIdException;
+import app.dao.exceptions.id.extensions.EmployeeNotFoundByIdException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +15,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     }
 
+
+    @Override
+    public List<Employee> getAll() {
+        return employees;
+    }
 
     @Override
     public Employee findById(int id) {

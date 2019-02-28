@@ -2,7 +2,7 @@ package app.dao.impl;
 
 import app.dao.ProjectDao;
 import app.entities.Project;
-import app.exceptions.id.extensions.ProjectNotFoundByIdException;
+import app.dao.exceptions.id.extensions.ProjectNotFoundByIdException;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +13,11 @@ public class ProjectDaoImpl implements ProjectDao {
 
     static {
 
+    }
+
+    @Override
+    public List<Project> getAll() {
+        return projects;
     }
 
     @Override
