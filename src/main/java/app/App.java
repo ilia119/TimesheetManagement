@@ -1,15 +1,16 @@
 package app;
 
 import app.entities.Company;
+import app.entities.Employee;
+import app.entities.Project;
 import app.service.factory.FactoryService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.List;
-
 public class App {
 
     public static void main(String[] args) {
+
 
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext("app/config");
@@ -17,15 +18,19 @@ public class App {
         FactoryService factoryService =
                 applicationContext.getBean(FactoryService.class);
 
-        List<Company> companies =
-                factoryService.getCompanyService().getCompanies();
-
-        for (Company company : companies) {
+        for (Company company :
+                factoryService.getCompanyService().getCompanies()) {
             System.out.println(company.toString());
         }
 
-        Company company = new Company(12, "re", "dsad");
+        for (Project project :
+        factoryService.getProjectService().getProjects()) {
+            System.out.println(project.toString());
+        }
 
-        factoryService.getCompanyService().delete(company);
+        for (Employee employee :
+        factoryService.getEmployeeService().getEmployees()) {
+            System.out.println(employee.toString());
+        }
     }
 }

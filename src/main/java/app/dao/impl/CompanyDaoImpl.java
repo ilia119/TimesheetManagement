@@ -14,9 +14,7 @@ public class CompanyDaoImpl implements CompanyDao {
 
     static {
         companies.add(
-                new Company(0, "Horn&Hooves", "someHornAndHoovesUrl"));
-        companies.add(
-                new Company(1, "Warm&Cold", "someWarmAndColdUrl"));
+                new Company(0, "Horn&Hooves", "someHorn&HoovesUrl"));
     }
 
     @Override

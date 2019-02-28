@@ -12,6 +12,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     private static List<Employee> employees = new LinkedList<>();
 
+    static {
+        employees.add(new Employee(0, "Marinka Mandarinka", "someMarinkaPhotoUrl",
+                "marinka.mandarinka@gmail.com"));
+        employees.add(new Employee(1, "Alynka Apelsynka", "someAlynkaPhotoUrl",
+                "alynka.apelsynka@gmail.com"));
+        employees.add(new Employee(2, "Agap Kryvolap", "someAgapPhotoUrl",
+                "agap.kryvolap@gmail.com"));
+    }
+
     @Override
     public List<Employee> getAll() {
         return employees;
