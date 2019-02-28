@@ -22,17 +22,22 @@ public class App {
     private static final int EMPLOYEE_ALYNKA_APELSYNKA_ID = 1;
     private static final int EMPLOYEE_AGAP_KRYVOLAP_ID = 2;
 
+    private static ApplicationContext applicationContext =
+            new AnnotationConfigApplicationContext("app/config");
+
+    private static FactoryService factoryService =
+            applicationContext.getBean(FactoryService.class);
+
+    static {
+        addEmployeesToCompany();
+        addProjectsToCompany();
+        assignEmployeesToProjects();
+
+        fillLogs();
+    }
+
 
     public static void main(String[] args) {
-
-
-        ApplicationContext applicationContext =
-                new AnnotationConfigApplicationContext("app/config");
-
-        FactoryService factoryService =
-                applicationContext.getBean(FactoryService.class);
-
-        fillLogs(factoryService);
 
         for (Logs logs :
                 factoryService.getLogsService().getAllLogs()) {
@@ -41,7 +46,7 @@ public class App {
 
     }
 
-    private static void fillLogs(FactoryService factoryService) {
+    private static void fillLogs() {
         Employee employeeMarinka =
                 factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID);
         Employee employeeAlynka =
@@ -121,7 +126,7 @@ public class App {
         factoryService.getLogsService().save(logs);
     }
 
-    private static void assignEmployeesToProjects(FactoryService factoryService) {
+    private static void assignEmployeesToProjects() {
         factoryService.getEmployeeService().assignToProject(
                 factoryService.getEmployeeService().findById(EMPLOYEE_MARINKA_MANDARINKA_ID),
                 factoryService.getProjectService().findById(PROJECT_CYBER_PINEAPPLE_ID)
@@ -145,14 +150,14 @@ public class App {
         );
     }
 
-    private static void outputCompanyToString(FactoryService factoryService) {
+    private static void outputCompanyToString() {
         Company company =
                 factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
 
         System.out.println(company.toString());
     }
 
-    private static void addEmployeesToCompany(FactoryService factoryService) {
+    private static void addEmployeesToCompany() {
         Company company =
                 factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
 
@@ -161,7 +166,7 @@ public class App {
         company.addEmployee(factoryService.getEmployeeService().findById(EMPLOYEE_AGAP_KRYVOLAP_ID));
     }
 
-    private static void addProjectsToCompany(FactoryService factoryService) {
+    private static void addProjectsToCompany() {
         Company company =
                 factoryService.getCompanyService().findById(COMPANY_HORN_AND_HOOVES_ID);
 
@@ -169,7 +174,7 @@ public class App {
         company.addProject(factoryService.getProjectService().findById(PROJECT_PURPLE_WARM_AND_COLD_HAMMER_ID));
     }
 
-    private static void outputAllData(FactoryService factoryService) {
+    private static void outputAllData() {
 
         for (Company company :
                 factoryService.getCompanyService().getCompanies()) {
