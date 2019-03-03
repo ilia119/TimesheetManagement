@@ -14,7 +14,7 @@ import java.util.List;
 public class CompanyController {
 
     @Autowired
-    FactoryService factoryService;
+    private FactoryService factoryService;
 
     @GET
     @Path("/all")
@@ -23,25 +23,55 @@ public class CompanyController {
         return factoryService.getCompanyService().getCompanies();
     }
 
-    @PUT
+    @GET
     @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response createTrackInJson(Company company, @PathParam("id") int id) {
-        factoryService.getCompanyService().save(company);
-        return Response.status(Response.Status.OK.getStatusCode()).build();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Company get(@PathParam("id") int id) {
+        return factoryService.getCompanyService().findById(id);
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addCompany(Company company) {
-
         factoryService.getCompanyService()
                 .save(new Company(company.getId(), company.getName(),
                         company.getLogoUrl()));
-
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
+    @POST
+    @Path("/delete/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response deleteCompany(@PathParam("id") int id) {
+        factoryService.getCompanyService()
+                .delete(id);
+        return Response.status(Response.Status.OK.getStatusCode()).build();
+    }
 
+    @POST
+    @Path("/add/employee/{companyId}/{employeeId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addEmployeeToCompany(@PathParam("companyId") int companyId,
+                                         @PathParam("employeeId") int employeeId) {
+        factoryService.getCompanyService()
+                .addEmployee(factoryService.getCompanyService()
+                                .findById(companyId),
+                        factoryService.getEmployeeService()
+                                .findById(employeeId));
+        return Response.status(Response.Status.OK.getStatusCode()).build();
+    }
+
+    @POST
+    @Path("/add/project/{companyId}/{projectId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addProjectToCompany(@PathParam("companyId") int companyId,
+                                        @PathParam("projectId") int projectId) {
+        factoryService.getCompanyService()
+                .addProject(factoryService.getCompanyService()
+                                .findById(companyId),
+                        factoryService.getProjectService()
+                                .findById(projectId));
+        return Response.status(Response.Status.OK.getStatusCode()).build();
+    }
 }

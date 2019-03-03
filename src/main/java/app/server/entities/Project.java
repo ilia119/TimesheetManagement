@@ -44,8 +44,32 @@ public class Project {
         return endDate;
     }
 
-    public double getManHours() {
+    public long getManHours() {
         return manHours;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setManHours(long manHours) {
+        this.manHours = manHours;
     }
 
     @Override

@@ -38,6 +38,22 @@ public class Employee {
         return email;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public void assignToProject(Project project) {
         projects.add(project);
     }

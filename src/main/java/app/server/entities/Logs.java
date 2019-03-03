@@ -30,7 +30,7 @@ public class Logs {
         return project;
     }
 
-    public double getTime() {
+    public long getTime() {
         return time;
     }
 
@@ -40,6 +40,26 @@ public class Logs {
 
     public Date getDate() {
         return date;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
