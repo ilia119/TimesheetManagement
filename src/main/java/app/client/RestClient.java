@@ -13,14 +13,16 @@ import javax.ws.rs.core.Response;
 public class RestClient {
 
     private static final String REST_URI
-            = "http://localhost:8080/spring_intro_task_Web_exploded/company/add";
+            = "http://localhost:8080/spring_intro_task_Web_exploded/company";
+    private static final String REST_ADD
+            = "add/";
 
     private Client client = ClientBuilder.newClient();
 
 
     public Response createJsonCompany(Company company) {
         return client
-                .target(REST_URI)
+                .target(REST_URI).path(REST_ADD)
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(company, MediaType.APPLICATION_JSON));
     }
