@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
-    <start-class>src.main.java.app.App</start-class>
+    <start-class>src.main.java.app.server.App</start-class>
   </properties>
 
   <dependencies>
@@ -33,18 +33,32 @@
       <version>2.10</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>5.1.5.RELEASE</version>
+      <version>4.3.22.RELEASE</version>
     </dependency>
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>5.1.5.RELEASE</version>
+      <version>4.3.22.RELEASE</version>
     </dependency>
+
+    <!--
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>4.3.22.RELEASE</version>
+    </dependency>
+    -->
 
     <dependency>
       <groupId>org.glassfish.jersey.core</groupId>
@@ -63,7 +77,20 @@
       <artifactId>jersey-container-servlet</artifactId>
       <version>2.28</version>
     </dependency>
-    
+
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>2.28</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.glassfish.jersey.ext</groupId>
+      <artifactId>jersey-spring4</artifactId>
+      <version>2.28</version>
+    </dependency>
+
+
   </dependencies>
 
   <build>
