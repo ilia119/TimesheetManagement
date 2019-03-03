@@ -2,6 +2,7 @@ package app.server.config;
 
 import app.server.controllers.CompanyController;
 import app.server.controllers.EmployeeController;
+import app.server.controllers.LogsController;
 import app.server.controllers.ProjectController;
 
 import javax.ws.rs.ApplicationPath;
@@ -16,6 +17,7 @@ public class RestConfig extends Application {
         return new
                 HashSet<Class<?>>(Arrays.asList(CompanyController.class,
                 EmployeeController.class,
-                ProjectController.class));
+                ProjectController.class,
+                LogsController.class));
     }
 }
