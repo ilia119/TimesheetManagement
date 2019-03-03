@@ -5,11 +5,13 @@ import java.util.Objects;
 
 public class Logs {
 
-    private final Employee employee;
-    private final Project project;
-    private final long time;
-    private final String comment;
-    private final Date date;
+    private Employee employee;
+    private Project project;
+    private long time;
+    private String comment;
+    private Date date;
+
+    public Logs() {}
 
     public Logs(Employee employee, Project project, long time,
                 String comment, Date date) {

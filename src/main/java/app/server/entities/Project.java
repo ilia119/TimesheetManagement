@@ -5,12 +5,14 @@ import java.util.Objects;
 
 public class Project {
 
-    private final int id;
-    private final String name;
-    private final String logoUrl;
-    private final Date startDate;
-    private final Date endDate;
-    private final long manHours;
+    private int id;
+    private String name;
+    private String logoUrl;
+    private Date startDate;
+    private Date endDate;
+    private long manHours;
+
+    public Project() {}
 
     public Project(int id, String name, String logoUrl,
                    Date startDate, Date endDate, long manHours) {

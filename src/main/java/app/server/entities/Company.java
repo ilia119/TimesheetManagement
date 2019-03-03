@@ -1,19 +1,21 @@
 package app.server.entities;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-@XmlRootElement
+
 public class Company {
 
-    private final int id;
-    private final String name;
-    private final String logoUrl;
+    private int id;
+    private String name;
+    private String logoUrl;
 
     private List<Employee> employees = new LinkedList<>();
     private List<Project> projects = new LinkedList<>();
+
+    public Company() {
+    }
 
     public Company(int id, String name, String logoUrl) {
         this.id = id;
@@ -47,6 +49,18 @@ public class Company {
 
     public List<Project> getProjects() {
         return projects;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 
     @Override

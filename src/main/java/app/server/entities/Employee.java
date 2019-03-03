@@ -6,12 +6,14 @@ import java.util.Objects;
 
 public class Employee {
 
-    private final int id;
-    private final String name;
-    private final String photo;
-    private final String email;
+    private int id;
+    private String name;
+    private String photo;
+    private String email;
 
     private List<Project> projects = new LinkedList<>();
+
+    public Employee() {}
 
     public Employee(int id, String name, String photo, String email) {
         this.id = id;
