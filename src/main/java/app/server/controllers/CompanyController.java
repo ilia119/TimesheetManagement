@@ -1,6 +1,7 @@
-package app.server.controller;
+package app.server.controllers;
 
 
+import app.server.entities.Company;
 import app.server.service.factory.FactoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/company")
 public class CompanyController {
@@ -27,10 +29,8 @@ public class CompanyController {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getAll() {
-        String result = "fail";
-        result = factoryService.getCompanyService().getCompanies().toString();
-        return result;
+    public List<Company> getAll() {
+        return factoryService.getCompanyService().getCompanies();
     }
 
 }
