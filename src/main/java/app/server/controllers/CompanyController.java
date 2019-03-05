@@ -35,8 +35,7 @@ public class CompanyController {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addCompany(Company company) {
         factoryService.getCompanyService()
-                .save(new Company(company.getId(), company.getName(),
-                        company.getLogoUrl()));
+                .save(company);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 

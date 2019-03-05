@@ -34,8 +34,7 @@ public class EmployeeController {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addEmployee(Employee employee) {
         factoryService.getEmployeeService()
-                .save(new Employee(employee.getId(), employee.getName(),
-                        employee.getPhoto(), employee.getEmail()));
+                .save(employee);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 

@@ -34,9 +34,7 @@ public class ProjectController {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProject(Project project) {
         factoryService.getProjectService()
-                .save(new Project(project.getId(), project.getName(),
-                        project.getLogoUrl(), project.getStartDate(),
-                        project.getEndDate(), project.getManHours()));
+                .save(project);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 

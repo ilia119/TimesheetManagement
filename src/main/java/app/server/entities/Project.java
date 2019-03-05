@@ -24,6 +24,15 @@ public class Project {
         this.manHours = manHours;
     }
 
+    public Project(Project project) {
+        this.id = project.getId();
+        this.name = project.getName();
+        this.logoUrl = project.getLogoUrl();
+        this.startDate = project.getStartDate();
+        this.endDate = project.getEndDate();
+        this.manHours = project.getManHours();
+    }
+
     public int getId() {
         return id;
     }

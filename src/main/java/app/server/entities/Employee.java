@@ -22,6 +22,16 @@ public class Employee {
         this.email = email;
     }
 
+
+
+    public Employee(Employee employee) {
+        this.id = employee.getId();
+        this.name = employee.getName();
+        this.photo = employee.getPhoto();
+        this.email = employee.getEmail();
+        this.projects = employee.getProjects();
+    }
+
     public int getId() {
         return id;
     }
@@ -36,6 +46,10 @@ public class Employee {
 
     public String getEmail() {
         return email;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
     }
 
     public void setId(int id) {

@@ -53,9 +53,7 @@ public class LogsController {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addLogs(Logs logs) {
         factoryService.getLogsService()
-                .save(new Logs(logs.getEmployee(), logs.getProject(),
-                        logs.getTime(), logs.getComment(),
-                        logs.getDate()));
+                .save(logs);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 

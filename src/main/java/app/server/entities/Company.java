@@ -23,6 +23,14 @@ public class Company {
         this.logoUrl = logoUrl;
     }
 
+    public Company(Company company) {
+        this.id = company.getId();
+        this.name = company.getName();
+        this.logoUrl = company.getLogoUrl();
+        this.employees = company.getEmployees();
+        this.projects = company.getProjects();
+    }
+
     public int getId() {
         return id;
     }
