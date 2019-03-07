@@ -22,8 +22,6 @@ public class Employee {
         this.email = email;
     }
 
-
-
     public Employee(Employee employee) {
         this.id = employee.getId();
         this.name = employee.getName();
