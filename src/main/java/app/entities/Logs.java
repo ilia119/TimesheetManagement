@@ -23,11 +23,8 @@ public class Logs {
     }
 
     public Logs(Logs logs) {
-        this.employee = logs.getEmployee();
-        this.project = logs.getProject();
-        this.time = logs.getTime();
-        this.comment = logs.getComment();
-        this.date = logs.getDate();
+        this(logs.getEmployee(), logs.getProject(), logs.getTime(),
+                logs.getComment(), logs.getDate());
     }
 
     public Employee getEmployee() {

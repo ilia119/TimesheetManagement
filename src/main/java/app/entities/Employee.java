@@ -23,10 +23,8 @@ public class Employee {
     }
 
     public Employee(Employee employee) {
-        this.id = employee.getId();
-        this.name = employee.getName();
-        this.photo = employee.getPhoto();
-        this.email = employee.getEmail();
+        this(employee.getId(), employee.getName(), employee.getPhoto(),
+                employee.getEmail());
         this.projects = employee.getProjects();
     }
 

@@ -29,21 +29,13 @@ public class Project {
 
     public Project(int id, String name, String logoUrl,
                    Date startDate, Date endDate, int manHoursInHours) {
-        this.id = id;
-        this.name = name;
-        this.logoUrl = logoUrl;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.manHours = TimeUtil.hoursToMillisecond(manHoursInHours);
+        this(id, name, logoUrl, startDate, endDate,
+                TimeUtil.hoursToMillisecond(manHoursInHours));
     }
 
     public Project(Project project) {
-        this.id = project.getId();
-        this.name = project.getName();
-        this.logoUrl = project.getLogoUrl();
-        this.startDate = project.getStartDate();
-        this.endDate = project.getEndDate();
-        this.manHours = project.getManHours();
+        this(project.getId(), project.getName(), project.getLogoUrl(),
+                project.getStartDate(), project.getEndDate(), project.getManHours());
     }
 
     public int getId() {

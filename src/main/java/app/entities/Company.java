@@ -24,9 +24,7 @@ public class Company {
     }
 
     public Company(Company company) {
-        this.id = company.getId();
-        this.name = company.getName();
-        this.logoUrl = company.getLogoUrl();
+        this(company.getId(), company.getName(), company.getLogoUrl());
         this.employees = company.getEmployees();
         this.projects = company.getProjects();
     }
