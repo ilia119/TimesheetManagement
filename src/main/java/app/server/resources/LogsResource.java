@@ -3,7 +3,7 @@ package app.server.resources;
 
 import app.server.entities.Logs;
 import app.server.entities.namespace.LogsNamespace;
-import app.server.service.factory.FactoryService;
+import app.server.service.LogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -15,45 +15,41 @@ import java.util.List;
 public class LogsResource {
 
     @Autowired
-    private FactoryService factoryService;
+    private LogsService logsService;
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Logs> getAll() {
-        return factoryService.getLogsService().getAllLogs();
+        return logsService.getAllLogs();
     }
 
     @GET
     @Path("/get/today")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Logs> getForToday() {
-        return factoryService.getLogsService()
-                .getLogFor(LogsNamespace.TODAY);
+        return logsService.getLogFor(LogsNamespace.TODAY);
     }
 
     @GET
     @Path("/get/week")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Logs> getForThisWeek() {
-        return factoryService.getLogsService()
-                .getLogFor(LogsNamespace.THIS_WEEK);
+        return logsService.getLogFor(LogsNamespace.THIS_WEEK);
     }
 
     @GET
     @Path("/get/month")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Logs> getForThisMonth() {
-        return factoryService.getLogsService()
-                .getLogFor(LogsNamespace.THIS_MONTH);
+        return logsService.getLogFor(LogsNamespace.THIS_MONTH);
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Logs logs) {
-        factoryService.getLogsService()
-                .save(logs);
+        logsService.save(logs);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -61,7 +57,7 @@ public class LogsResource {
     @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(Logs logs) {
-        factoryService.getLogsService().delete(logs);
+        logsService.delete(logs);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 }

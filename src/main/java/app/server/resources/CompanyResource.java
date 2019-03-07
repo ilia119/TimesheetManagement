@@ -2,7 +2,9 @@ package app.server.resources;
 
 
 import app.server.entities.Company;
-import app.server.service.factory.FactoryService;
+import app.server.service.CompanyService;
+import app.server.service.EmployeeService;
+import app.server.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -14,28 +16,31 @@ import java.util.List;
 public class CompanyResource {
 
     @Autowired
-    private FactoryService factoryService;
+    private CompanyService companyService;
+    @Autowired
+    private EmployeeService employeeService;
+    @Autowired
+    private ProjectService projectService;
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Company> getAll() {
-        return factoryService.getCompanyService().getCompanies();
+        return companyService.getCompanies();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Company get(@PathParam("id") int id) {
-        return factoryService.getCompanyService().findById(id);
+        return companyService.findById(id);
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Company company) {
-        factoryService.getCompanyService()
-                .save(company);
+        companyService.save(company);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -43,8 +48,7 @@ public class CompanyResource {
     @Path("/edit/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response edit(@PathParam("id") int id, Company company) {
-        factoryService.getCompanyService()
-                .edit(company);
+        companyService.edit(company);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -52,8 +56,7 @@ public class CompanyResource {
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") int id) {
-        factoryService.getCompanyService()
-                .delete(id);
+        companyService.delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
@@ -62,11 +65,8 @@ public class CompanyResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addEmployeeToCompany(@PathParam("companyId") int companyId,
                                          @PathParam("employeeId") int employeeId) {
-        factoryService.getCompanyService()
-                .addEmployee(factoryService.getCompanyService()
-                                .findById(companyId),
-                        factoryService.getEmployeeService()
-                                .findById(employeeId));
+        companyService.addEmployee(companyService.findById(companyId),
+                employeeService.findById(employeeId));
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
@@ -75,11 +75,8 @@ public class CompanyResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProjectToCompany(@PathParam("companyId") int companyId,
                                         @PathParam("projectId") int projectId) {
-        factoryService.getCompanyService()
-                .addProject(factoryService.getCompanyService()
-                                .findById(companyId),
-                        factoryService.getProjectService()
-                                .findById(projectId));
+        companyService.addProject(companyService.findById(companyId),
+                projectService.findById(projectId));
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 }

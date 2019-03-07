@@ -1,7 +1,7 @@
 package app.server.resources;
 
 import app.server.entities.Project;
-import app.server.service.factory.FactoryService;
+import app.server.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -13,28 +13,27 @@ import java.util.List;
 public class ProjectResource {
 
     @Autowired
-    private FactoryService factoryService;
+    private ProjectService projectService;
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Project> getAll() {
-        return factoryService.getProjectService().getProjects();
+        return projectService.getProjects();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Project get(@PathParam("id") int id) {
-        return factoryService.getProjectService().findById(id);
+        return projectService.findById(id);
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Project project) {
-        factoryService.getProjectService()
-                .save(project);
+        projectService.save(project);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -42,8 +41,7 @@ public class ProjectResource {
     @Path("/edit/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response edit(@PathParam("id") int id, Project project) {
-        factoryService.getProjectService()
-                .edit(project);
+        projectService.edit(project);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -51,8 +49,7 @@ public class ProjectResource {
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") int id) {
-        factoryService.getProjectService()
-                .delete(id);
+        projectService.delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 }

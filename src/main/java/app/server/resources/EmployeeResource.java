@@ -1,7 +1,8 @@
 package app.server.resources;
 
 import app.server.entities.Employee;
-import app.server.service.factory.FactoryService;
+import app.server.service.EmployeeService;
+import app.server.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -13,28 +14,29 @@ import java.util.List;
 public class EmployeeResource {
 
     @Autowired
-    private FactoryService factoryService;
+    private EmployeeService employeeService;
+    @Autowired
+    private ProjectService projectService;
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Employee> getAll() {
-        return factoryService.getEmployeeService().getEmployees();
+        return employeeService.getEmployees();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Employee get(@PathParam("id") int id) {
-        return factoryService.getEmployeeService().findById(id);
+        return employeeService.findById(id);
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(Employee employee) {
-        factoryService.getEmployeeService()
-                .save(employee);
+        employeeService.save(employee);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -42,8 +44,7 @@ public class EmployeeResource {
     @Path("/edit/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response edit(@PathParam("id") int id, Employee employee) {
-        factoryService.getEmployeeService()
-                .edit(employee);
+        employeeService.edit(employee);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -51,8 +52,7 @@ public class EmployeeResource {
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") int id) {
-        factoryService.getEmployeeService()
-                .delete(id);
+        employeeService.delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
@@ -60,10 +60,8 @@ public class EmployeeResource {
     @Path("/assign/{employeeId}/{projectId}")
     public Response assignToProject(@PathParam("employeeId") int employeeId,
                                     @PathParam("projectId") int projectId) {
-        factoryService.getEmployeeService()
-                .assignToProject(factoryService.getEmployeeService()
-                                .findById(employeeId),
-                        factoryService.getProjectService().findById(projectId));
+        employeeService.assignToProject(employeeService.findById(employeeId),
+                projectService.findById(projectId));
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 }

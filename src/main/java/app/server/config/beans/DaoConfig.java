@@ -5,8 +5,6 @@ import app.server.dao.CompanyDao;
 import app.server.dao.EmployeeDao;
 import app.server.dao.LogsDao;
 import app.server.dao.ProjectDao;
-import app.server.dao.factory.FactoryDao;
-import app.server.dao.factory.impl.FactoryDaoImpl;
 import app.server.dao.impl.CompanyDaoImpl;
 import app.server.dao.impl.EmployeeDaoImpl;
 import app.server.dao.impl.LogsDaoImpl;
@@ -16,11 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DaoConfig {
-
-    @Bean
-    public FactoryDao getFactoryDao() {
-        return new FactoryDaoImpl();
-    }
 
     @Bean
     public CompanyDao getCompanyDao() {
