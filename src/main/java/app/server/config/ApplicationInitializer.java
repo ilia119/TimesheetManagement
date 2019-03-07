@@ -6,8 +6,9 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletContext;
+
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ApplicationInitializer implements WebApplicationInitializer {
@@ -18,6 +19,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
                 = new AnnotationConfigWebApplicationContext();
         servletContext.addListener(new ContextLoaderListener(context));
         servletContext.setInitParameter("contextConfigLocation",
-                        "app.server.config.beans");
+                "app.server.config.beans");
     }
+
 }

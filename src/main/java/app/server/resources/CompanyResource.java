@@ -1,4 +1,4 @@
-package app.server.controllers;
+package app.server.resources;
 
 
 import app.server.entities.Company;
@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/company")
-public class CompanyController {
+public class CompanyResource {
 
     @Autowired
     private FactoryService factoryService;

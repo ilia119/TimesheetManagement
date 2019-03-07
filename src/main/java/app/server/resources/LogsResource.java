@@ -1,4 +1,4 @@
-package app.server.controllers;
+package app.server.resources;
 
 
 import app.server.entities.Logs;
@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/logs")
-public class LogsController {
+public class LogsResource {
 
     @Autowired
     private FactoryService factoryService;

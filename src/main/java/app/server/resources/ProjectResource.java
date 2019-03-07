@@ -1,4 +1,4 @@
-package app.server.controllers;
+package app.server.resources;
 
 import app.server.entities.Project;
 import app.server.service.factory.FactoryService;
@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/project")
-public class ProjectController {
+public class ProjectResource {
 
     @Autowired
     private FactoryService factoryService;
