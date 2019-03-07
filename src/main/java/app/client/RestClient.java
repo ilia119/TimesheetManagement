@@ -16,13 +16,13 @@ import javax.ws.rs.core.Response;
 public class RestClient {
 
     private static final String COMPANY_URI
-            = "http://localhost:8080/spring_intro_task_Web_exploded/company";
+            = "http://localhost:4848/spring-intro-task/company";
     private static final String EMPLOYEE_URI
-            = "http://localhost:8080/spring_intro_task_Web_exploded/employee";
+            = "http://localhost:4848/spring-intro-task/employee";
     private static final String PROJECT_URI
-            = "http://localhost:8080/spring_intro_task_Web_exploded/project";
+            = "http://localhost:4848/spring-intro-task/project";
     private static final String LOGS_URI
-            = "http://localhost:8080/spring_intro_task_Web_exploded/logs";
+            = "http://localhost:4848/spring-intro-task/logs";
     private static final String ADD = "add/";
 
     private Client client = ClientBuilder.newClient();
