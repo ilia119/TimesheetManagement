@@ -24,6 +24,7 @@ public enum LogsNamespace {
     public Date getBoundaryDate() {
         return boundaryDate;
     }
+
     private static class Constants {
         private static final int NUMBER_FIRST_DAY_IN_MONTH = 1;
     }

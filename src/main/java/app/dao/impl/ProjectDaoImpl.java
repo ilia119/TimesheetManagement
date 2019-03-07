@@ -4,10 +4,9 @@ import app.dao.ProjectDao;
 import app.dao.exceptions.exist.extensions.ProjectNonExistException;
 import app.dao.exceptions.id.extensions.ProjectNotFoundByIdException;
 import app.entities.Project;
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Repository;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,38 +17,24 @@ public class ProjectDaoImpl implements ProjectDao {
     private static List<Project> projects = new LinkedList<>();
 
     static {
-        Calendar calendarStartDate = Calendar.getInstance();
-        calendarStartDate.clear();
-        calendarStartDate.set(Calendar.YEAR, 2018);
-        calendarStartDate.set(Calendar.MONTH, Calendar.OCTOBER);
-        calendarStartDate.set(Calendar.DAY_OF_MONTH, 5);
+        DateTime startDate = DateTime.parse("2018-10-05");
+        startDate.toDate();
 
-        Calendar calendarEndDate = Calendar.getInstance();
-        calendarEndDate.clear();
-        calendarEndDate.set(Calendar.YEAR, 2019);
-        calendarEndDate.set(Calendar.MONTH, Calendar.MARCH);
-        calendarEndDate.set(Calendar.DAY_OF_MONTH, 1);
-
-        long manHours = 3600000000L;
+        DateTime endDate = DateTime.parse("2019-03-01");
 
         projects.add(new Project(0, "Cyber Pineapple",
                 "someCyberPineAppleUrl",
-                new Date(calendarStartDate.getTimeInMillis()),
-                new Date(calendarEndDate.getTimeInMillis()),
-                manHours));
+                startDate.toDate(),
+                endDate.toDate(),
+                360));
 
-        calendarEndDate.clear();
-        calendarEndDate.set(Calendar.YEAR, 2019);
-        calendarEndDate.set(Calendar.MONTH, Calendar.MAY);
-        calendarEndDate.set(Calendar.DAY_OF_MONTH, 1);
-
-        manHours = 5400000000L;
+        endDate = DateTime.parse("2019-05-01");
 
         projects.add(new Project(1, "Purple Warm&Cold Hammer",
                 "somePurpleWarm&ColdHammerUrl",
-                new Date(calendarStartDate.getTimeInMillis()),
-                new Date(calendarEndDate.getTimeInMillis()),
-                manHours));
+                startDate.toDate(),
+                endDate.toDate(),
+                514));
 
     }
 

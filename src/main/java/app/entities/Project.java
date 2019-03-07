@@ -1,5 +1,7 @@
 package app.entities;
 
+import app.utils.TimeUtil;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,16 +14,27 @@ public class Project {
     private Date endDate;
     private long manHours;
 
-    public Project() {}
+    public Project() {
+    }
 
     public Project(int id, String name, String logoUrl,
-                   Date startDate, Date endDate, long manHours) {
+                   Date startDate, Date endDate, long manHoursInMilliseconds) {
         this.id = id;
         this.name = name;
         this.logoUrl = logoUrl;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.manHours = manHours;
+        this.manHours = manHoursInMilliseconds;
+    }
+
+    public Project(int id, String name, String logoUrl,
+                   Date startDate, Date endDate, int manHoursInHours) {
+        this.id = id;
+        this.name = name;
+        this.logoUrl = logoUrl;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.manHours = TimeUtil.hoursToMillisecond(manHoursInHours);
     }
 
     public Project(Project project) {
@@ -77,8 +90,12 @@ public class Project {
         this.endDate = endDate;
     }
 
-    public void setManHours(long manHours) {
-        this.manHours = manHours;
+    public void setManHours(long manHoursInMilliseconds) {
+        this.manHours = manHoursInMilliseconds;
+    }
+
+    public void setManHours(int manHoursInHours) {
+        this.manHours = TimeUtil.hoursToMillisecond(manHoursInHours);
     }
 
     @Override
