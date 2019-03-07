@@ -15,4 +15,6 @@ public interface EmployeeDao {
     void save(Employee employee);
 
     void delete(Employee employee);
+
+    void edit(Employee employee);
 }

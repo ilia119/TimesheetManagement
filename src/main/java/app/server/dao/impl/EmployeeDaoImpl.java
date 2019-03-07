@@ -64,4 +64,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
             exception.printStackTrace();
         }
     }
+
+    @Override
+    public synchronized void edit(Employee employee) {
+        int index = employees.indexOf(findById(employee.getId()));
+        employees.remove(index);
+        employees.add(index, employee);
+    }
 }

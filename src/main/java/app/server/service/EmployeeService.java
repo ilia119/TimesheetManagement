@@ -20,4 +20,6 @@ public interface EmployeeService {
     void delete(Employee employee);
 
     void delete(int id);
+
+    void edit(Employee employee);
 }

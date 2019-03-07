@@ -62,4 +62,11 @@ public class CompanyDaoImpl implements CompanyDao {
             exception.printStackTrace();
         }
     }
+
+    @Override
+    public synchronized void edit(Company company) {
+        int index = companies.indexOf(findById(company.getId()));
+        companies.remove(index);
+        companies.add(index, company);
+    }
 }

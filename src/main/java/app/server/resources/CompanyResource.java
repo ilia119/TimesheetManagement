@@ -33,16 +33,25 @@ public class CompanyResource {
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addCompany(Company company) {
+    public Response add(Company company) {
         factoryService.getCompanyService()
                 .save(company);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
-    @POST
+    @PUT
+    @Path("/edit/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response edit(@PathParam("id") int id, Company company) {
+        factoryService.getCompanyService()
+                .edit(company);
+        return Response.status(Response.Status.CREATED.getStatusCode()).build();
+    }
+
+    @DELETE
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteCompany(@PathParam("id") int id) {
+    public Response delete(@PathParam("id") int id) {
         factoryService.getCompanyService()
                 .delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();

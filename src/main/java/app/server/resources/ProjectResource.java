@@ -32,16 +32,25 @@ public class ProjectResource {
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addProject(Project project) {
+    public Response add(Project project) {
         factoryService.getProjectService()
                 .save(project);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
-    @POST
+    @PUT
+    @Path("/edit/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response edit(@PathParam("id") int id, Project project) {
+        factoryService.getProjectService()
+                .edit(project);
+        return Response.status(Response.Status.CREATED.getStatusCode()).build();
+    }
+
+    @DELETE
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteProject(@PathParam("id") int id) {
+    public Response delete(@PathParam("id") int id) {
         factoryService.getProjectService()
                 .delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();

@@ -16,4 +16,5 @@ public interface ProjectDao {
 
     void delete(Project project);
 
+    void edit(Project project);
 }

@@ -95,4 +95,12 @@ public class ProjectDaoImpl implements ProjectDao {
             exception.printStackTrace();
         }
     }
+
+    @Override
+    public synchronized void edit(Project project) {
+        int index = projects.indexOf(findById(project.getId()));
+        projects.remove(index);
+        projects.add(index, project);
+
+    }
 }

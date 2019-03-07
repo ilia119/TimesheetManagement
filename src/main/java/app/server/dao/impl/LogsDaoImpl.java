@@ -59,4 +59,5 @@ public class LogsDaoImpl implements LogsDao {
             exception.printStackTrace();
         }
     }
+
 }

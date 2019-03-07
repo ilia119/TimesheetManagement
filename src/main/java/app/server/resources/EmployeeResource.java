@@ -32,16 +32,25 @@ public class EmployeeResource {
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addEmployee(Employee employee) {
+    public Response add(Employee employee) {
         factoryService.getEmployeeService()
                 .save(employee);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
-    @POST
+    @PUT
+    @Path("/edit/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response edit(@PathParam("id") int id, Employee employee) {
+        factoryService.getEmployeeService()
+                .edit(employee);
+        return Response.status(Response.Status.CREATED.getStatusCode()).build();
+    }
+
+    @DELETE
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteCompany(@PathParam("id") int id) {
+    public Response delete(@PathParam("id") int id) {
         factoryService.getEmployeeService()
                 .delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();

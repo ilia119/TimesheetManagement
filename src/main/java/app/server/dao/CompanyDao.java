@@ -16,4 +16,6 @@ public interface CompanyDao {
     void save(Company company);
 
     void delete(Company company);
+
+    void edit(Company company);
 }

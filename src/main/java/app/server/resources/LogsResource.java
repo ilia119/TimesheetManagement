@@ -27,7 +27,7 @@ public class LogsResource {
     @GET
     @Path("/get/today")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Logs> getLogsForToday() {
+    public List<Logs> getForToday() {
         return factoryService.getLogsService()
                 .getLogFor(LogsNamespace.TODAY);
     }
@@ -35,7 +35,7 @@ public class LogsResource {
     @GET
     @Path("/get/week")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Logs> getLogsForThisWeek() {
+    public List<Logs> getForThisWeek() {
         return factoryService.getLogsService()
                 .getLogFor(LogsNamespace.THIS_WEEK);
     }
@@ -43,7 +43,7 @@ public class LogsResource {
     @GET
     @Path("/get/month")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Logs> getLogsForThisMonth() {
+    public List<Logs> getForThisMonth() {
         return factoryService.getLogsService()
                 .getLogFor(LogsNamespace.THIS_MONTH);
     }
@@ -51,16 +51,16 @@ public class LogsResource {
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addLogs(Logs logs) {
+    public Response add(Logs logs) {
         factoryService.getLogsService()
                 .save(logs);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
-    @POST
+    @DELETE
     @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteLogs(Logs logs) {
+    public Response delete(Logs logs) {
         factoryService.getLogsService().delete(logs);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
