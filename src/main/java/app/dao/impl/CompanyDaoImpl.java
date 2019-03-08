@@ -2,6 +2,7 @@ package app.dao.impl;
 
 import app.dao.CompanyDao;
 import app.entities.Company;
+import app.exceptions.EntityNotFound;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedList;
@@ -29,7 +30,7 @@ public class CompanyDaoImpl implements CompanyDao {
                 return company;
             }
         }
-        throw new IllegalArgumentException("No company by id=" + id);
+        throw new EntityNotFound();
     }
 
     @Override
