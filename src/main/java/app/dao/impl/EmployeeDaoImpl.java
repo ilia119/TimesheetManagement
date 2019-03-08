@@ -1,8 +1,6 @@
 package app.dao.impl;
 
 import app.dao.EmployeeDao;
-import app.dao.exceptions.exist.extensions.EmployeeNonExistException;
-import app.dao.exceptions.id.extensions.EmployeeNotFoundByIdException;
 import app.entities.Employee;
 import org.springframework.stereotype.Repository;
 
@@ -30,18 +28,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public synchronized Employee findById(int id) {
-        try {
-            for (Employee employee : employees) {
-                if (employee.getId() == id) {
-                    return employee;
-                }
+        for (Employee employee : employees) {
+            if (employee.getId() == id) {
+                return employee;
             }
-            throw new EmployeeNotFoundByIdException("No employee by id = "
-                    + id, id);
-        } catch (EmployeeNotFoundByIdException exception) {
-            exception.printStackTrace();
         }
-        return null;
+        throw new IllegalArgumentException("No employee by id=" + id);
     }
 
     @Override
@@ -51,17 +43,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public synchronized void delete(Employee retiringEmployee) {
-        try {
-            for (Employee employee : employees) {
-                if (employee.equals(retiringEmployee)) {
-                    employees.remove(retiringEmployee);
-                    return;
-                }
+        for (Employee employee : employees) {
+            if (employee.equals(retiringEmployee)) {
+                employees.remove(retiringEmployee);
+                return;
             }
-            throw new EmployeeNonExistException("Not exist this employee: "
-                    + retiringEmployee.toString(), retiringEmployee);
-        } catch (EmployeeNonExistException exception) {
-            exception.printStackTrace();
         }
     }
 

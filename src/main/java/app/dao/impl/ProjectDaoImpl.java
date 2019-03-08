@@ -1,8 +1,6 @@
 package app.dao.impl;
 
 import app.dao.ProjectDao;
-import app.dao.exceptions.exist.extensions.ProjectNonExistException;
-import app.dao.exceptions.id.extensions.ProjectNotFoundByIdException;
 import app.entities.Project;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Repository;
@@ -45,18 +43,12 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public synchronized Project findById(int id) {
-        try {
-            for (Project project : projects) {
-                if (project.getId() == id) {
-                    return project;
-                }
+        for (Project project : projects) {
+            if (project.getId() == id) {
+                return project;
             }
-            throw new ProjectNotFoundByIdException("No project by id = "
-                    + id, id);
-        } catch (ProjectNotFoundByIdException exception) {
-            exception.printStackTrace();
         }
-        return null;
+        throw new IllegalArgumentException("No project by id=" + id);
     }
 
 
@@ -67,17 +59,11 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public synchronized void delete(Project retiringProject) {
-        try {
-            for (Project project : projects) {
-                if (project.equals(retiringProject)) {
-                    projects.remove(retiringProject);
-                    return;
-                }
+        for (Project project : projects) {
+            if (project.equals(retiringProject)) {
+                projects.remove(retiringProject);
+                return;
             }
-            throw new ProjectNonExistException("Not exist this project: "
-                    + retiringProject.toString(), retiringProject);
-        } catch (ProjectNonExistException exception) {
-            exception.printStackTrace();
         }
     }
 
