@@ -3,6 +3,7 @@ package app.dao.impl;
 import app.dao.LogsDao;
 import app.entities.Logs;
 import app.entities.namespace.LogsNamespace;
+import app.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -45,12 +46,10 @@ public class LogsDaoImpl implements LogsDao {
 
     @Override
     public synchronized void delete(Logs retiringLogs) {
-        for (Logs logs : logsList) {
-            if (logs.equals(retiringLogs)) {
-                logsList.remove(retiringLogs);
-                return;
-            }
+        if (!logsList.contains(retiringLogs)) {
+            throw new EntityNotFoundException();
         }
+        logsList.remove(retiringLogs);
     }
 
 }

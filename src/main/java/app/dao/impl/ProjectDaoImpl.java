@@ -2,6 +2,8 @@ package app.dao.impl;
 
 import app.dao.ProjectDao;
 import app.entities.Project;
+import app.exceptions.EntityAlreadyExistsException;
+import app.exceptions.EntityNotFoundException;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Repository;
 
@@ -48,29 +50,32 @@ public class ProjectDaoImpl implements ProjectDao {
                 return project;
             }
         }
-        throw new IllegalArgumentException("No project by id=" + id);
+        throw new EntityNotFoundException();
     }
 
 
     @Override
     public synchronized void save(Project project) {
+        for (Project savedProject : projects) {
+            if (savedProject.getId() == project.getId()) {
+                throw new EntityAlreadyExistsException();
+            }
+        }
         projects.add(project);
     }
 
     @Override
     public synchronized void delete(Project retiringProject) {
-        for (Project project : projects) {
-            if (project.equals(retiringProject)) {
-                projects.remove(retiringProject);
-                return;
-            }
+        if (!projects.contains(retiringProject)) {
+            throw new EntityNotFoundException();
         }
     }
 
     @Override
     public synchronized void edit(Project project) {
-        int index = projects.indexOf(findById(project.getId()));
-        projects.remove(index);
+        Project oldProject = findById(project.getId());
+        int index = projects.indexOf(oldProject);
+        projects.remove(oldProject);
         projects.add(index, project);
 
     }

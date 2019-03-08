@@ -2,6 +2,8 @@ package app.dao.impl;
 
 import app.dao.EmployeeDao;
 import app.entities.Employee;
+import app.exceptions.EntityAlreadyExistsException;
+import app.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedList;
@@ -33,28 +35,32 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 return employee;
             }
         }
-        throw new IllegalArgumentException("No employee by id=" + id);
+        throw new EntityNotFoundException();
     }
 
     @Override
     public synchronized void save(Employee employee) {
+        for (Employee savedEmployee : employees) {
+            if (savedEmployee.getId() == employee.getId()) {
+                throw new EntityAlreadyExistsException();
+            }
+        }
         employees.add(employee);
     }
 
     @Override
     public synchronized void delete(Employee retiringEmployee) {
-        for (Employee employee : employees) {
-            if (employee.equals(retiringEmployee)) {
-                employees.remove(retiringEmployee);
-                return;
-            }
+        if(!employees.contains(retiringEmployee)) {
+            throw new EntityNotFoundException();
         }
+        employees.remove(retiringEmployee);
     }
 
     @Override
     public synchronized void edit(Employee employee) {
-        int index = employees.indexOf(findById(employee.getId()));
-        employees.remove(index);
+        Employee oldEmployee = findById(employee.getId());
+        int index = employees.indexOf(oldEmployee);
+        employees.remove(oldEmployee);
         employees.add(index, employee);
     }
 }
