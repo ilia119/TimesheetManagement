@@ -2,7 +2,8 @@ package app.dao.impl;
 
 import app.dao.CompanyDao;
 import app.entities.Company;
-import app.exceptions.EntityNotFound;
+import app.exceptions.EntityAlreadyExistsException;
+import app.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.LinkedList;
@@ -30,28 +31,32 @@ public class CompanyDaoImpl implements CompanyDao {
                 return company;
             }
         }
-        throw new EntityNotFound();
+        throw new EntityNotFoundException();
     }
 
     @Override
     public synchronized void save(Company company) {
+        for (Company savedCompany : companies) {
+            if (savedCompany.getId() == company.getId()) {
+                throw new EntityAlreadyExistsException();
+            }
+        }
         companies.add(company);
     }
 
     @Override
     public synchronized void delete(Company retiringCompany) {
-        for (Company company : companies) {
-            if (company.equals(retiringCompany)) {
-                companies.remove(retiringCompany);
-                return;
-            }
+        if (!companies.contains(retiringCompany)) {
+            throw new EntityNotFoundException();
         }
+        companies.remove(retiringCompany);
     }
 
     @Override
     public synchronized void edit(Company company) {
-        int index = companies.indexOf(findById(company.getId()));
-        companies.remove(index);
+        Company oldCompany = findById(company.getId());
+        int index = companies.indexOf(oldCompany);
+        companies.remove(oldCompany);
         companies.add(index, company);
     }
 }
