@@ -50,7 +50,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public synchronized void delete(Employee retiringEmployee) {
-        if(!employees.contains(retiringEmployee)) {
+        if (!employees.contains(retiringEmployee)) {
             throw new EntityNotFoundException();
         }
         employees.remove(retiringEmployee);

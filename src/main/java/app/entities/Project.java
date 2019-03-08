@@ -34,8 +34,12 @@ public class Project {
     }
 
     public Project(Project project) {
-        this(project.getId(), project.getName(), project.getLogoUrl(),
-                project.getStartDate(), project.getEndDate(), project.getManHours());
+        this(project.getId(),
+                project.getName(),
+                project.getLogoUrl(),
+                project.getStartDate(),
+                project.getEndDate(),
+                project.getManHours());
     }
 
     public int getId() {

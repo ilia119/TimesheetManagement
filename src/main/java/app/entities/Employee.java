@@ -13,7 +13,8 @@ public class Employee {
 
     private List<Project> projects = new LinkedList<>();
 
-    public Employee() {}
+    public Employee() {
+    }
 
     public Employee(int id, String name, String photo, String email) {
         this.id = id;
@@ -23,7 +24,9 @@ public class Employee {
     }
 
     public Employee(Employee employee) {
-        this(employee.getId(), employee.getName(), employee.getPhoto(),
+        this(employee.getId(),
+                employee.getName(),
+                employee.getPhoto(),
                 employee.getEmail());
         this.projects = employee.getProjects();
     }

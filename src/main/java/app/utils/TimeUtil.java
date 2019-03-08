@@ -2,9 +2,9 @@ package app.utils;
 
 public class TimeUtil {
 
-    private final static float MINUTES_IN_AN_HOUR = 60;
-    private final static float SECONDS_IN_AN_MINUTE = 60;
-    private final static float MILLISECONDS_PER_SECONDS = 1000;
+    private static final float MINUTES_IN_AN_HOUR = 60;
+    private static final float SECONDS_IN_AN_MINUTE = 60;
+    private static final float MILLISECONDS_PER_SECONDS = 1000;
 
     public static long hoursToMillisecond(int hours) {
         if (hours < 0) {

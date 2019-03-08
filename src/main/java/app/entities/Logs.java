@@ -11,7 +11,8 @@ public class Logs {
     private String comment;
     private Date date;
 
-    public Logs() {}
+    public Logs() {
+    }
 
     public Logs(Employee employee, Project project, long time,
                 String comment, Date date) {
@@ -23,8 +24,11 @@ public class Logs {
     }
 
     public Logs(Logs logs) {
-        this(logs.getEmployee(), logs.getProject(), logs.getTime(),
-                logs.getComment(), logs.getDate());
+        this(logs.getEmployee(),
+                logs.getProject(),
+                logs.getTime(),
+                logs.getComment(),
+                logs.getDate());
     }
 
     public Employee getEmployee() {
