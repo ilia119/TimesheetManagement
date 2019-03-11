@@ -58,6 +58,7 @@ public class EmployeeResource {
 
     @POST
     @Path("/assign/{employeeId}/{projectId}")
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response assignToProject(@PathParam("employeeId") int employeeId,
                                     @PathParam("projectId") int projectId) {
         employeeService.assignToProject(employeeService.findById(employeeId),
