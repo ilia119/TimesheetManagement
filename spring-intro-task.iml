@@ -3,32 +3,17 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="AppConfig" removed="false" />
-        <fileset id="fileset2" name="Spring Application Context" removed="false">
-          <dependency>fileset</dependency>
+        <fileset id="fileset" name="Spring Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/app/config/beans/DaoConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/app/config/beans/ServiceConfig.java</file>
+          <file>jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/ext/jersey-spring4/2.28/jersey-spring4-2.28.jar!/jersey-spring-applicationContext.xml</file>
         </fileset>
       </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/web/WEB-INF/web.xml" />
-        </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/web" relative="/" />
-        </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/java" />
-        </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="web" name="Web2">
-      <configuration>
-        <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/out/artifacts/TimesheetManagement/WEB-INF/web.xml" />
-        </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/out/artifacts/TimesheetManagement" relative="/" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />

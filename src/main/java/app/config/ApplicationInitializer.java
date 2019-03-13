@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ApplicationInitializer implements WebApplicationInitializer {
+
     @Override
     public void onStartup(ServletContext servletContext)
             throws ServletException {
