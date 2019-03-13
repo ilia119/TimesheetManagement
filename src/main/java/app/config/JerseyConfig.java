@@ -3,13 +3,11 @@ package app.config;
 import app.resources.CompanyResource;
 import app.resources.EmployeeResource;
 import app.resources.LogsResource;
-import app.service.ProjectService;
+import app.resources.ProjectResource;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.springframework.context.annotation.Configuration;
 
 import javax.ws.rs.ApplicationPath;
 
-@Configuration
 @ApplicationPath("/*")
 public class JerseyConfig extends ResourceConfig {
 
@@ -17,6 +15,6 @@ public class JerseyConfig extends ResourceConfig {
         register(CompanyResource.class);
         register(EmployeeResource.class);
         register(LogsResource.class);
-        register(ProjectService.class);
+        register(ProjectResource.class);
     }
 }
