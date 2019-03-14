@@ -68,12 +68,14 @@ public class CompanyDaoImpl implements CompanyDao {
     }
 
     @Override
-    public synchronized void addEmployeeToCompany(Company company, Employee employee) {
+    public synchronized void addEmployeeToCompany(Company company,
+                                                  Employee employee) {
         company.addEmployee(employee);
     }
 
     @Override
-    public synchronized void addProjectToCompany(Company company, Project project) {
+    public synchronized void addProjectToCompany(Company company,
+                                                 Project project) {
         company.addProject(project);
     }
 }

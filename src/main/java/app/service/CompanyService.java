@@ -63,8 +63,9 @@ public class CompanyService {
     @POST
     @Path("/add/employee/{companyId}/{employeeId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addEmployeeToCompany(@PathParam("companyId") int companyId,
-                                         @PathParam("employeeId") int employeeId) {
+    public Response addEmployeeToCompany(
+            @PathParam("companyId") int companyId,
+            @PathParam("employeeId") int employeeId) {
         companyDao.addEmployeeToCompany(companyDao.findById(companyId),
                 employeeDao.findById(employeeId));
         return Response.status(Response.Status.OK.getStatusCode()).build();
@@ -73,8 +74,9 @@ public class CompanyService {
     @POST
     @Path("/add/project/{companyId}/{projectId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addProjectToCompany(@PathParam("companyId") int companyId,
-                                        @PathParam("projectId") int projectId) {
+    public Response addProjectToCompany(
+            @PathParam("companyId") int companyId,
+            @PathParam("projectId") int projectId) {
         companyDao.addProjectToCompany(companyDao.findById(companyId),
                 projectDao.findById(projectId));
         return Response.status(Response.Status.OK.getStatusCode()).build();

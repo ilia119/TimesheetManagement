@@ -59,8 +59,9 @@ public class EmployeeService {
     @POST
     @Path("/assign/{employeeId}/{projectId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response assignToProject(@PathParam("employeeId") int employeeId,
-                                    @PathParam("projectId") int projectId) {
+    public Response assignToProject(
+            @PathParam("employeeId") int employeeId,
+            @PathParam("projectId") int projectId) {
         employeeDao.assignToProject(employeeDao.findById(employeeId),
                 projectDao.findById(projectId));
         return Response.status(Response.Status.OK.getStatusCode()).build();
