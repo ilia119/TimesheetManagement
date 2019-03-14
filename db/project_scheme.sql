@@ -18,10 +18,10 @@ workLoadInMinuts int
 );
 
 create table Invitations (
-	employeeId bigint NOT NULL PRIMARY KEY,
-    companyId bigint NOT NULL,
-	email VARCHAR(150) NOT NULL,
-    invitationsCode VARCHAR(40) NOT NULL,
-	dateEnd datetime NOT NULL,
-    status varchar(25) NOT NULL
+employeeId bigint NOT NULL PRIMARY KEY,
+companyId bigint NOT NULL,
+email VARCHAR(150) NOT NULL,
+invitationsCode VARCHAR(40) NOT NULL,
+dateEnd datetime NOT NULL,
+status varchar(25) NOT NULL
 );
