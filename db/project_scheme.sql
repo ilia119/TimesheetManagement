@@ -10,3 +10,9 @@ CREATE TABLE `project` (
   `description` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table Assigment (
+projectId bigint NOT NULL, 
+employeeId bigint NOT NULL, 
+workLoadInMinuts int 
+);
