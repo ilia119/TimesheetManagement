@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
+
       <configuration>
         <fileset id="fileset" name="Spring Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/app/config/beans/DaoConfig.java</file>
@@ -9,6 +10,7 @@
           <file>jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/ext/jersey-spring4/2.28/jersey-spring4-2.28.jar!/jersey-spring-applicationContext.xml</file>
         </fileset>
       </configuration>
+
     </facet>
     <facet type="web" name="Web">
       <configuration>

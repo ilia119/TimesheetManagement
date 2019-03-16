@@ -21,10 +21,8 @@
 
 # Intellij
 .idea/
-*.iml
 *.iws
 out/
-classes/
 
 # Maven
 log/
