@@ -10,3 +10,10 @@ CREATE TABLE `project` (
   `description` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table Timesheet (
+id bigint NOT NULL primary key,
+periodId bigint NOT NULL,
+timesheetJson json NOT NULL,
+status varchar(100) NOT NULL
+);
