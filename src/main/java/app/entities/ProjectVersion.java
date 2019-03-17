@@ -1,42 +1,29 @@
 package app.entities;
 
-import java.io.IOException;
-import java.util.Properties;
+import java.util.Objects;
 
 public class ProjectVersion {
+
     private String version;
+
+    public ProjectVersion() {
+    }
 
     public ProjectVersion(String version) {
         this.version = version;
     }
 
-    public ProjectVersion() {
-
-    }
-
-    public ProjectVersion getProjectVersion() {
-        return new ProjectVersion(getVersion());
-    }
-
-    public String getVersion() {
-        Properties properties = new Properties();
-        try {
-            properties.load(this.getClass().getResourceAsStream("/project.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return version = properties.getProperty("version");
+    public ProjectVersion(ProjectVersion version) {
+        this(version.getVersion());
     }
 
     public void setVersion(String version) {
         this.version = version;
     }
 
-    @Override
-    public String toString() {
-        return "ProjectVersion{" +
-                "version='" + version + '\'' +
-                '}';
+
+    public String getVersion() {
+        return version;
     }
 
     @Override
@@ -46,7 +33,7 @@ public class ProjectVersion {
 
         ProjectVersion that = (ProjectVersion) o;
 
-        return version != null ? version.equals(that.version) : that.version == null;
+        return Objects.equals(version, that.version);
     }
 
     @Override
