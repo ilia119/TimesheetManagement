@@ -32,3 +32,4 @@ id bigint NOT NULL primary key,
 periodId bigint NOT NULL,
 timesheetJson json NOT NULL,
 status varchar(100) NOT NULL
+);
