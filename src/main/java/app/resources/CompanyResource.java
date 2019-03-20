@@ -1,8 +1,10 @@
-package app.service;
+package app.resources;
 
+
+import app.dao.CompanyDao;
 import app.dao.EmployeeDao;
 import app.dao.ProjectDao;
-import app.entities.Employee;
+import app.entities.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -10,9 +12,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/employee")
-public class EmployeeService {
+@Path("/company")
+public class CompanyResource {
 
+    @Autowired
+    private CompanyDao companyDao;
     @Autowired
     private EmployeeDao employeeDao;
     @Autowired
@@ -21,30 +25,30 @@ public class EmployeeService {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Employee> getAll() {
-        return employeeDao.getAll();
+    public List<Company> getAll() {
+        return companyDao.getAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Employee get(@PathParam("id") int id) {
-        return employeeDao.findById(id);
+    public Company get(@PathParam("id") int id) {
+        return companyDao.findById(id);
     }
 
     @POST
     @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response add(Employee employee) {
-        employeeDao.save(employee);
+    public Response add(Company company) {
+        companyDao.save(company);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
     @PUT
     @Path("/edit/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response edit(@PathParam("id") int id, Employee employee) {
-        employeeDao.edit(employee);
+    public Response edit(@PathParam("id") int id, Company company) {
+        companyDao.edit(company);
         return Response.status(Response.Status.CREATED.getStatusCode()).build();
     }
 
@@ -52,17 +56,28 @@ public class EmployeeService {
     @Path("/delete/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response delete(@PathParam("id") int id) {
-        employeeDao.delete(id);
+        companyDao.delete(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
     @POST
-    @Path("/assign/{employeeId}/{projectId}")
+    @Path("/add/employee/{companyId}/{employeeId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response assignToProject(
-            @PathParam("employeeId") int employeeId,
+    public Response addEmployeeToCompany(
+            @PathParam("companyId") int companyId,
+            @PathParam("employeeId") int employeeId) {
+        companyDao.addEmployeeToCompany(companyDao.findById(companyId),
+                employeeDao.findById(employeeId));
+        return Response.status(Response.Status.OK.getStatusCode()).build();
+    }
+
+    @POST
+    @Path("/add/project/{companyId}/{projectId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addProjectToCompany(
+            @PathParam("companyId") int companyId,
             @PathParam("projectId") int projectId) {
-        employeeDao.assignToProject(employeeDao.findById(employeeId),
+        companyDao.addProjectToCompany(companyDao.findById(companyId),
                 projectDao.findById(projectId));
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
