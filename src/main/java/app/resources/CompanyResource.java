@@ -5,6 +5,7 @@ import app.dao.CompanyDao;
 import app.dao.EmployeeDao;
 import app.dao.ProjectDao;
 import app.entities.Company;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +18,8 @@ import java.util.List;
 @Path("/company")
 public class CompanyResource {
 
+    public static final Logger log = Logger.getLogger(CompanyResource.class);
+
     @Autowired
     private CompanyDao companyDao;
     @Autowired
@@ -28,6 +31,7 @@ public class CompanyResource {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Company> getAll() {
+        log.warn("From getAll method");
         return companyDao.getAll();
     }
 

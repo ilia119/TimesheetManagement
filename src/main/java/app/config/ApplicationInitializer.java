@@ -13,13 +13,10 @@ import javax.servlet.ServletException;
 public class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override
-    public void onStartup(ServletContext servletContext)
-            throws ServletException {
-        AnnotationConfigWebApplicationContext springContext
-                = new AnnotationConfigWebApplicationContext();
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        AnnotationConfigWebApplicationContext springContext = new AnnotationConfigWebApplicationContext();
         servletContext.addListener(new ContextLoaderListener(springContext));
-        servletContext.setInitParameter("contextConfigLocation",
-                "app.config.beans");
+        servletContext.setInitParameter("contextConfigLocation", "app.config.beans");
         springContext.setServletContext(servletContext);
     }
 
